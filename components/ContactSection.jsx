@@ -16,7 +16,7 @@ export default function ContactSection() {
             <div className="flex justify-center mb-4">
               <FaEnvelope className="text-yellow-400 text-3xl" />
             </div>
-            <h3 className="text-xl font-semibold mb-2">Email Me</h3>
+            <h3 className="text-xl font-semibold mb-2 text-blue-400">Email Me</h3>
             <a 
               href="mailto:reyannshafi@gmail.com" 
               className="text-gray-300 hover:text-yellow-400 transition-colors"
@@ -29,7 +29,7 @@ export default function ContactSection() {
             <div className="flex justify-center mb-4">
               <FaPhone className="text-yellow-400 text-3xl" />
             </div>
-            <h3 className="text-xl font-semibold mb-2">Call Me</h3>
+            <h3 className="text-xl font-semibold mb-2 text-blue-400">Call Me</h3>
             <a 
               href="tel:+919906512509" 
               className="text-gray-300 hover:text-yellow-400 transition-colors"
