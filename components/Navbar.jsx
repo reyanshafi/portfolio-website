@@ -33,8 +33,8 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex-shrink-0 group">
-            <span className="text-2xl font-bold text-white group-hover:text-yellow-400 transition-colors duration-300">
-              Rayan <span className="text-yellow-400 group-hover:text-white transition-colors duration-300">Shafi</span>
+            <span className="text-2xl font-bold text-white group-hover:text-yellow-400 transition-colors duration-300 uppercase">
+              Rayan<span className="text-yellow-400 group-hover:text-white transition-colors duration-300">Shafi</span>
             </span>
           </Link>
 

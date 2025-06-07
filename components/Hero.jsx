@@ -1,64 +1,65 @@
 export default function Hero() {
   return (
-    <section className="relative bg-gradient-to-br from-gray-900 via-purple-950 to-gray-950 text-white min-h-screen flex items-center overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-0 left-0 w-32 h-32 bg-yellow-400 rounded-full mix-blend-overlay opacity-20 blur-xl"></div>
-        <div className="absolute bottom-0 right-0 w-64 h-64 bg-purple-500 rounded-full mix-blend-overlay opacity-20 blur-xl"></div>
-        <div className="absolute top-1/3 right-1/4 w-16 h-16 bg-blue-400 rounded-full mix-blend-overlay opacity-10 blur-lg"></div>
-      </div>
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
-          {/* Text Content */}
-          <div className="text-center lg:text-left lg:w-1/2 relative z-10">
-            <div className="mb-6">
-              <span className="text-yellow-400 font-medium tracking-wider">FULL STACK DEVELOPER</span>
+    <section className="relative bg-gray-950 text-white min-h-screen flex items-center pt-16 pb-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
+          {/* Text Content - Mobile-first approach */}
+          <div className="text-center lg:text-left lg:w-1/2 order-2 lg:order-1 mt-10 lg:mt-0">
+            <div className="mb-3 lg:mb-4">
+              <span className="text-yellow-400 font-mono text-xs sm:text-sm tracking-widest">
+                FULL-STACK DEVELOPER
+              </span>
             </div>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
-              Hi, I'm <span className="text-yellow-400">Rayan Shafi</span>
+            
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light leading-tight">
+              Hi, I'm <span className="text-yellow-400 font-medium">Rayan Shafi</span>
             </h1>
-            <p className="text-lg md:text-xl mt-6 text-gray-300 max-w-lg mx-auto lg:mx-0">
-              I build exceptional digital experiences using the <span className="text-yellow-400 font-medium">MERN stack</span> with over 1.5 years of hands-on development expertise.
+            
+            <p className="text-base sm:text-lg md:text-xl mt-4 sm:mt-6 text-gray-400 max-w-md mx-auto lg:mx-0">
+              I craft modern web applications with focus on performance, accessibility, and clean design.
             </p>
-            <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            
+            {/* Buttons - Stacked on mobile */}
+            <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
               <a
                 href="/projects"
-                className="relative inline-flex items-center justify-center px-8 py-3 overflow-hidden font-medium text-gray-900 rounded-lg group bg-yellow-400 hover:bg-yellow-500 transition-all duration-300 ease-out shadow-lg hover:shadow-xl"
+                className="px-5 py-2.5 sm:px-6 sm:py-3 bg-yellow-400 text-gray-900 font-medium rounded hover:bg-yellow-300 transition-colors duration-200 flex items-center justify-center gap-2 text-sm sm:text-base"
               >
-                <span className="relative">View My Work</span>
-                <svg className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                View Work
+                <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
                 </svg>
               </a>
               <a
                 href="#contact"
-                className="relative inline-flex items-center justify-center px-8 py-3 overflow-hidden font-medium text-yellow-400 border-2 border-yellow-400 rounded-lg group hover:text-gray-900 transition-all duration-300 ease-out"
+                className="px-5 py-2.5 sm:px-6 sm:py-3 border border-gray-700 text-gray-300 font-medium rounded hover:border-yellow-400 hover:text-yellow-400 transition-colors duration-200 text-sm sm:text-base text-center"
               >
-                <span className="absolute inset-0 w-full h-full bg-yellow-400 transition-all duration-300 ease-out opacity-0 group-hover:opacity-10"></span>
-                <span className="relative">Contact Me</span>
+                Contact
               </a>
             </div>
             
-            {/* Tech stack indicators */}
-            <div className="mt-12 flex flex-wrap justify-center lg:justify-start gap-3">
-              {['React', 'Node.js', 'MongoDB', 'Express', 'Next.js', 'TypeScript'].map((tech) => (
-                <span key={tech} className="px-3 py-1 bg-gray-800/50 backdrop-blur-sm rounded-full text-sm text-gray-300 border border-gray-700">
+            {/* Tech stack - Centered on mobile */}
+            <div className="mt-8 sm:mt-12 flex flex-wrap justify-center lg:justify-start gap-2">
+              {['React', 'Node', 'TypeScript', 'Next.js'].map((tech) => (
+                <span 
+                  key={tech} 
+                  className="px-2.5 py-1 text-xs text-gray-400 font-mono border border-gray-800 rounded"
+                >
                   {tech}
                 </span>
               ))}
             </div>
           </div>
 
-          {/* Image */}
-          <div className="lg:w-1/2 relative flex justify-center">
-            <div className="relative">
-              <div className="absolute -inset-4 rounded-full bg-yellow-400 opacity-20 blur-lg"></div>
-              <div className="absolute -inset-2 rounded-full bg-yellow-400 opacity-30 blur-sm"></div>
+          {/* Image - Smaller on mobile, centered */}
+          <div className="lg:w-1/2 flex justify-center order-1 lg:order-2 w-full">
+            <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80">
+              <div className="absolute inset-0 rounded-full border border-yellow-400"></div>
               <img
                 src="/assets/pic.png"
-                alt="Rayan Shafi's Profile"
-                className="relative w-64 sm:w-72 md:w-80 lg:w-96 rounded-full border-4 border-yellow-400/30 shadow-2xl transform transition-transform hover:scale-105 duration-500"
+                alt="Rayan Shafi"
+                className="relative w-full h-full border-4 rounded-full object-cover"
+                loading="eager"
               />
             </div>
           </div>
