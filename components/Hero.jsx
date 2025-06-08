@@ -1,12 +1,33 @@
-'use client'
+'use client';
+
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
+
 export default function Hero() {
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [0, 100]);
+
   return (
-    <section className="min-h-screen flex items-center bg-[#f7f8fa] text-gray-800">
+    <motion.section
+      ref={sectionRef}
+      style={{ y }}
+      className="min-h-screen flex items-center bg-[#f7f8fa] text-gray-800"
+    >
       <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12 py-20">
-          
+
           {/* Left Text Section */}
-          <div className="lg:w-1/2 text-center lg:text-left space-y-6">
+          <motion.div
+            className="lg:w-1/2 text-center lg:text-left space-y-6"
+            initial={{ opacity: 0, x: -40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+          >
             <h1 className="text-5xl sm:text-6xl font-serif font-medium leading-tight">
               Get Your <br />
               <span className="text-gray-900">Product Identity</span><br />
@@ -17,7 +38,7 @@ export default function Hero() {
               From idea to detailed design, I create timeless visuals backed by strategic thinking.
             </p>
 
-            <div className="pt-4">
+            <div className="pt-4 flex flex-col sm:flex-row sm:justify-center lg:justify-start gap-4">
               <a 
                 href="/resume.pdf" 
                 download 
@@ -25,26 +46,39 @@ export default function Hero() {
               >
                 Download CV
               </a>
+
+              <a 
+                href="/about" 
+                className="inline-block border border-black text-black px-6 py-3 text-sm rounded-full hover:bg-gray-200 hover:text-black transition-all duration-300"
+              >
+                Know More About Me
+              </a>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Profile Section */}
-          <div className="lg:w-1/2">
+          <motion.div
+            className="lg:w-1/2"
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
+          >
             <div className="w-64 h-64 sm:w-72 sm:h-72 rounded-full overflow-hidden border-[6px] border-gray-200 shadow-xl mx-auto">
               <img 
                 src="/assets/pic.png" 
                 alt="Rayan Shafi" 
                 className="w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
             <div className="text-center mt-6">
               <h2 className="text-lg font-medium">Rayan Shafi</h2>
               <p className="text-sm text-gray-500">Full-Stack Developer</p>
             </div>
-          </div>
+          </motion.div>
 
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

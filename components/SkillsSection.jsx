@@ -1,13 +1,16 @@
-'use client'
+'use client';
+
 import { FaReact, FaNodeJs, FaDatabase } from "react-icons/fa";
-import { 
-  SiTailwindcss, 
-  SiNextdotjs, 
-  SiTypescript, 
-  SiJavascript, 
+import {
+  SiTailwindcss,
+  SiNextdotjs,
+  SiTypescript,
+  SiJavascript,
   SiGraphql,
-  SiExpress 
+  SiExpress
 } from "react-icons/si";
+
+import { motion } from "framer-motion";
 
 const skills = [
   { name: "React", icon: <FaReact className="text-blue-400" /> },
@@ -24,7 +27,13 @@ const skills = [
 
 export default function SkillsMarquee() {
   return (
-    <section className="py-20 bg-white border-t border-gray-200">
+    <motion.section
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      viewport={{ once: true }}
+      className="py-20 bg-white border-t border-gray-200"
+    >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-serif font-light text-gray-800 mb-2">
@@ -37,22 +46,21 @@ export default function SkillsMarquee() {
 
         {/* Marquee Container */}
         <div className="relative overflow-hidden">
-          <div className="flex w-max animate-marquee whitespace-nowrap">
+          <div className="flex w-max animate-marquee whitespace-nowrap will-change-transform">
             {[...skills, ...skills].map((skill, index) => (
-              <div 
+              <motion.div
                 key={index}
+                whileHover={{ scale: 1.05 }}
                 className="inline-flex items-center mx-3 px-4 py-2 bg-white border border-gray-200 rounded-full shadow-sm hover:border-black/10 transition-all duration-300"
               >
-                <div className="mr-2 text-lg">
-                  {skill.icon}
-                </div>
+                <div className="mr-2 text-lg">{skill.icon}</div>
                 <span className="text-sm text-gray-700 font-medium">{skill.name}</span>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
 
-        {/* Animation styles */}
+        {/* Marquee Animation */}
         <style jsx>{`
           @keyframes marquee {
             0% { transform: translateX(0); }
@@ -63,6 +71,6 @@ export default function SkillsMarquee() {
           }
         `}</style>
       </div>
-    </section>
+    </motion.section>
   );
 }

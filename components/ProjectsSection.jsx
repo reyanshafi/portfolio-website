@@ -1,8 +1,9 @@
-'use client'
+'use client';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { SiNextdotjs, SiNodedotjs, SiReact, SiMongodb, SiTailwindcss } from 'react-icons/si';
+import Image from 'next/image';
 
 const projects = [
   {
@@ -39,24 +40,25 @@ const techIcons = {
   "Tailwind": <SiTailwindcss className="text-cyan-500" />
 };
 
+const variants = {
+  enter: (direction) => ({ x: direction > 0 ? 100 : -100, opacity: 0 }),
+  center: { x: 0, opacity: 1 },
+  exit: (direction) => ({ x: direction < 0 ? 100 : -100, opacity: 0 }),
+};
+
 export default function ProjectCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
 
   const navigate = (newDirection) => {
-    setDirection(newDirection);
-    setCurrentIndex((prev) =>
-      newDirection > 0
-        ? (prev + 1) % projects.length
-        : (prev - 1 + projects.length) % projects.length
-    );
-  };
+  setDirection(newDirection);
+  setCurrentIndex((prev) =>
+    newDirection > 0
+      ? (prev + 1) % projects.length
+      : (prev - 1 + projects.length) % projects.length
+  );
+};
 
-  const variants = {
-    enter: (direction) => ({ x: direction > 0 ? 100 : -100, opacity: 0 }),
-    center: { x: 0, opacity: 1 },
-    exit: (direction) => ({ x: direction < 0 ? 100 : -100, opacity: 0 }),
-  };
 
   return (
     <section className="py-20 bg-white border-t border-gray-200">
@@ -81,22 +83,29 @@ export default function ProjectCarousel() {
               animate="center"
               exit="exit"
               transition={{ duration: 0.4 }}
-              className="block h-full"
+              className="block h-full will-change-transform"
             >
-              <div className="h-full bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
-                <div className="h-2/3 overflow-hidden rounded-t-xl">
-                  <img 
+              <div className="h-full bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden">
+                <div className="h-2/3 relative">
+                  <Image
                     src={projects[currentIndex].image}
                     alt={projects[currentIndex].title}
-                    className="w-full h-full object-cover"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover rounded-t-xl"
+                    priority
                   />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-lg font-semibold text-gray-800 mb-1">{projects[currentIndex].title}</h3>
-                  <p className="text-gray-500 text-sm mb-4">{projects[currentIndex].description}</p>
+                  <h3 className="text-lg font-semibold text-gray-800 mb-1">
+                    {projects[currentIndex].title}
+                  </h3>
+                  <p className="text-gray-500 text-sm mb-4">
+                    {projects[currentIndex].description}
+                  </p>
                   <div className="flex flex-wrap gap-2">
                     {projects[currentIndex].technologies.map((tech) => (
-                      <span 
+                      <span
                         key={tech}
                         className="flex items-center gap-1.5 px-3 py-1 bg-gray-100 border border-gray-300 text-xs rounded-full text-gray-700"
                       >
@@ -110,19 +119,23 @@ export default function ProjectCarousel() {
             </motion.a>
           </AnimatePresence>
 
+          {/* Navigation Buttons */}
           <button
             onClick={() => navigate(-1)}
+            aria-label="Previous project"
             className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white p-2 border border-gray-300 rounded-full shadow hover:bg-gray-100 transition-colors z-10"
           >
             <FaChevronLeft className="text-gray-800" />
           </button>
           <button
             onClick={() => navigate(1)}
+            aria-label="Next project"
             className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white p-2 border border-gray-300 rounded-full shadow hover:bg-gray-100 transition-colors z-10"
           >
             <FaChevronRight className="text-gray-800" />
           </button>
 
+          {/* Dots */}
           <div className="flex justify-center mt-6 gap-1.5">
             {projects.map((_, index) => (
               <button
@@ -131,6 +144,7 @@ export default function ProjectCarousel() {
                   setDirection(index > currentIndex ? 1 : -1);
                   setCurrentIndex(index);
                 }}
+                aria-label={`Go to project ${index + 1}`}
                 className={`w-2.5 h-2.5 rounded-full transition-colors duration-300 ${
                   currentIndex === index ? 'bg-gray-800' : 'bg-gray-300'
                 }`}
