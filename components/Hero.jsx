@@ -1,7 +1,15 @@
 'use client';
 
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useEffect, useState } from 'react';
+
+const headings = [
+  "Build. Scale. Deliver.",
+  "Design. Code. Deploy.",
+  "Crafting Clean User Experiences.",
+  "Turning Ideas Into Interfaces.",
+  "Full-Stack. Minimal. Impactful.",
+];
 
 export default function Hero() {
   const sectionRef = useRef(null);
@@ -11,6 +19,15 @@ export default function Hero() {
   });
 
   const y = useTransform(scrollYProgress, [0, 1], [0, 100]);
+
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % headings.length);
+    }, 3000); // Change every 3 seconds
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <motion.section
@@ -28,14 +45,19 @@ export default function Hero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, ease: 'easeOut' }}
           >
-            <h1 className="text-5xl sm:text-6xl font-serif font-medium leading-tight">
-              Get Your <br />
-              <span className="text-gray-900">Product Identity</span><br />
-              From <span className="italic">Me.</span>
-            </h1>
+            <motion.h1
+              key={headings[index]}
+              className="text-4xl sm:text-5xl font-serif font-medium leading-tight"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.6 }}
+            >
+              {headings[index]}
+            </motion.h1>
 
             <p className="text-gray-600 max-w-md mx-auto lg:mx-0 text-base leading-relaxed">
-              From idea to detailed design, I create timeless visuals backed by strategic thinking.
+              I’m a <strong className="text-black">Full-Stack Developer</strong> crafting seamless UI, scalable APIs, and practical solutions across the web.
             </p>
 
             <div className="pt-4 flex flex-col sm:flex-row sm:justify-center lg:justify-start gap-4">
@@ -44,14 +66,14 @@ export default function Hero() {
                 download 
                 className="inline-block bg-black text-white px-6 py-3 text-sm rounded-full hover:bg-gray-900 transition-all duration-300"
               >
-                Download CV
+                Download Resume
               </a>
 
               <a 
                 href="/about" 
                 className="inline-block border border-black text-black px-6 py-3 text-sm rounded-full hover:bg-gray-200 hover:text-black transition-all duration-300"
               >
-                Know More About Me
+                Explore My Work
               </a>
             </div>
           </motion.div>
@@ -72,8 +94,7 @@ export default function Hero() {
               />
             </div>
             <div className="text-center mt-6">
-              <h2 className="text-lg font-medium">Rayan Shafi</h2>
-              <p className="text-sm text-gray-500">Full-Stack Developer</p>
+              <p className="text-sm text-gray-600 tracking-wider">FULL STACK DEVELOPER</p>
             </div>
           </motion.div>
 

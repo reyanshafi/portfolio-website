@@ -26,6 +26,7 @@ export default function Navbar() {
     { href: "/", label: "Home" },
     { href: "/about", label: "About" },
     { href: "/projects", label: "Projects" },
+    { href: "/blog", label: "Blog" },
     { href: "/contact", label: "Contact" }
   ];
 
@@ -40,7 +41,7 @@ export default function Navbar() {
 
           {/* Logo - Left */}
           <Link href="/" className="text-gray-900 text-xl font-semibold uppercase tracking-wider hover:text-black transition-all duration-300">
-            Rayan<span className="text-gray-500">Shafi</span>
+            Rayan<span className="text-gray-600">Shafi</span>
           </Link>
 
           {/* Desktop Links */}
