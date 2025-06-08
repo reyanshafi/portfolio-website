@@ -1,3 +1,4 @@
+'use client'
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import "../app/globals.css";
@@ -21,13 +22,13 @@ import {
 import { motion } from "framer-motion";
 
 const techIcons = {
-  "Node.js": <FaNodeJs className="text-green-500" />,
-  "Express.js": <SiExpress className="text-gray-100" />,
-  "MongoDB": <SiMongodb className="text-green-400" />,
-  "React.js": <FaReact className="text-blue-400" />,
-  "Next.js": <SiNextdotjs className="text-white" />,
-  "PostgreSQL": <SiPostgresql className="text-blue-300" />,
-  "Supabase": <SiSupabase className="text-green-400" />,
+  "Node.js": <FaNodeJs className="text-green-600" />,
+  "Express.js": <SiExpress className="text-gray-800" />,
+  "MongoDB": <SiMongodb className="text-green-500" />,
+  "React.js": <FaReact className="text-blue-500" />,
+  "Next.js": <SiNextdotjs className="text-gray-800" />,
+  "PostgreSQL": <SiPostgresql className="text-blue-600" />,
+  "Supabase": <SiSupabase className="text-green-500" />,
   "Razorpay": <SiRazorpay className="text-blue-500" />
 };
 
@@ -89,24 +90,23 @@ export default function Projects() {
   return (
     <>
       <Navbar />
-      <main className="bg-gray-950 text-white min-h-screen">
+      <main className="bg-[#f7f8fa] text-gray-800 min-h-screen">
         {/* Hero Section */}
-        <section className="relative py-16 sm:py-24 overflow-hidden">
-          <div className="absolute inset-0 bg-[url('/assets/grid.svg')] opacity-5"></div>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
+        <section className="min-h-[40vh] flex items-center justify-center border-b border-gray-200">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full text-center py-16">
             <motion.h1 
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6"
+              className="text-4xl sm:text-5xl font-serif font-medium mb-4"
             >
-              My <span className="text-yellow-400">Projects</span>
+              My <span className="text-gray-900">Projects</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3, duration: 0.8 }}
-              className="text-lg sm:text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto"
+              className="text-gray-600 max-w-md mx-auto text-lg"
             >
               Professional and freelance work showcasing my development expertise
             </motion.p>
@@ -114,7 +114,7 @@ export default function Projects() {
         </section>
 
         {/* Projects Grid */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-24">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
           <motion.div 
             initial="hidden"
             animate="visible"
@@ -127,7 +127,7 @@ export default function Projects() {
                 }
               }
             }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
             {projects.map((project, index) => (
               <motion.div 
@@ -136,28 +136,27 @@ export default function Projects() {
                 whileHover={{ y: -5 }}
                 className="group relative h-full"
               >
-                <div className="absolute inset-0 bg-yellow-400 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
-                <div className="h-full bg-gray-900 rounded-xl border border-gray-800 overflow-hidden shadow-md group-hover:shadow-lg transition-all duration-300 relative z-10 flex flex-col">
-                  <div className="p-5 sm:p-6 flex-grow">
-                    <div className="flex justify-between items-start mb-3 sm:mb-4">
-                      <h2 className="text-lg sm:text-xl font-bold">{project.title}</h2>
-                      <span className={`px-2 sm:px-3 py-1 w- rounded-full text-xs font-medium ${project.status === "Completed" ? "bg-green-900/30 text-green-400" : "bg-yellow-900/30 text-yellow-400"}`}>
+                <div className="h-full bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm group-hover:shadow-md transition-all duration-300 relative z-10 flex flex-col">
+                  <div className="p-6 flex-grow space-y-4">
+                    <div className="flex justify-between items-start">
+                      <h2 className="text-xl font-serif font-medium">{project.title}</h2>
+                      <span className={`px-3 py-1 rounded-full text-xs ${project.status === "Completed" ? "bg-green-100 text-green-600" : "bg-yellow-100 text-yellow-600"}`}>
                         {project.status}
                       </span>
                     </div>
                     
-                    <p className="text-gray-400 mb-4 sm:mb-5 text-sm">{project.description}</p>
+                    <p className="text-gray-600 text-sm">{project.description}</p>
                     
-                    <div className="mb-4 sm:mb-5">
-                      <h3 className="text-xs sm:text-sm font-semibold text-yellow-400 mb-2 sm:mb-3 flex items-center">
-                        <span className="w-4 h-0.5 bg-yellow-400 mr-2"></span>
+                    <div>
+                      <h3 className="text-xs font-medium text-gray-500 mb-2 flex items-center">
+                        <span className="w-4 h-0.5 bg-gray-300 mr-2"></span>
                         Technologies
                       </h3>
-                      <div className="flex flex-wrap gap-2 sm:gap-3">
+                      <div className="flex flex-wrap gap-2">
                         {project.technologies.map((tech, i) => (
                           <div 
                             key={i} 
-                            className="flex items-center gap-1 sm:gap-2 bg-gray-800 px-2 sm:px-3 py-1 rounded-lg border border-gray-700 text-xs sm:text-sm"
+                            className="flex items-center gap-2 bg-gray-100 px-3 py-1 rounded-full border border-gray-200 text-xs"
                           >
                             {techIcons[tech]}
                             <span>{tech}</span>
@@ -167,14 +166,14 @@ export default function Projects() {
                     </div>
                     
                     <div>
-                      <h3 className="text-xs sm:text-sm font-semibold text-yellow-400 mb-2 sm:mb-3 flex items-center">
-                        <span className="w-4 h-0.5 bg-yellow-400 mr-2"></span>
+                      <h3 className="text-xs font-medium text-gray-500 mb-2 flex items-center">
+                        <span className="w-4 h-0.5 bg-gray-300 mr-2"></span>
                         Key Features
                       </h3>
-                      <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-gray-300">
+                      <ul className="space-y-2 text-sm text-gray-600">
                         {project.features.map((feature, i) => (
                           <li key={i} className="flex items-start">
-                            <span className="text-yellow-400 mr-1.5 sm:mr-2 mt-0.5 sm:mt-1">•</span>
+                            <span className="text-gray-400 mr-2 mt-0.5">•</span>
                             <span>{feature}</span>
                           </li>
                         ))}
@@ -182,27 +181,27 @@ export default function Projects() {
                     </div>
                   </div>
                   
-                  <div className="px-5 sm:px-6 py-3 sm:py-4 bg-gray-800 border-t border-gray-700 flex justify-between items-center">
+                  <div className="px-6 py-4 bg-gray-50 border-t border-gray-200 flex justify-between items-center">
                     {project.demo ? (
                       <>
                         <a 
                           href={project.demo}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-yellow-400 hover:text-yellow-300 text-xs sm:text-sm font-medium flex items-center group"
+                          className="text-gray-800 hover:text-blue-600 text-sm font-medium flex items-center group"
                         >
                           Live Demo
-                          <FaExternalLinkAlt className="ml-1.5 sm:ml-2 text-xs opacity-0 group-hover:opacity-100 transition-opacity" />
+                          <FaExternalLinkAlt className="ml-2 text-xs opacity-0 group-hover:opacity-100 transition-opacity" />
                         </a>
                         {project.dashboard && (
                           <a 
                             href={project.dashboard}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-gray-400 hover:text-yellow-400 text-xs sm:text-sm font-medium flex items-center group"
+                            className="text-gray-600 hover:text-blue-600 text-sm font-medium flex items-center group"
                           >
                             Dashboard
-                            <FaExternalLinkAlt className="ml-1.5 sm:ml-2 text-xs opacity-0 group-hover:opacity-100 transition-opacity" />
+                            <FaExternalLinkAlt className="ml-2 text-xs opacity-0 group-hover:opacity-100 transition-opacity" />
                           </a>
                         )}
                       </>
@@ -211,11 +210,11 @@ export default function Projects() {
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-yellow-400 hover:text-yellow-300 text-xs sm:text-sm font-medium flex items-center group"
+                        className="text-gray-800 hover:text-blue-600 text-sm font-medium flex items-center group"
                       >
-                        <FaGithub className="mr-1.5 sm:mr-2" />
+                        <FaGithub className="mr-2" />
                         View Code
-                        <FaExternalLinkAlt className="ml-1.5 sm:ml-2 text-xs opacity-0 group-hover:opacity-100 transition-opacity" />
+                        <FaExternalLinkAlt className="ml-2 text-xs opacity-0 group-hover:opacity-100 transition-opacity" />
                       </a>
                     )}
                   </div>
