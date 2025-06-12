@@ -2,30 +2,29 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
+import Image from 'next/image';
 
 const headings = [
-  "Build. Scale. Deliver.",
-  "Design. Code. Deploy.",
-  "Crafting Clean User Experiences.",
-  "Turning Ideas Into Interfaces.",
-  "Full-Stack. Minimal. Impactful.",
+  'Build. Scale. Deliver.',
+  'Design. Code. Deploy.',
+  'Crafting Clean User Experiences.',
+  'Turning Ideas Into Interfaces.',
+  'Full-Stack. Minimal. Impactful.',
 ];
 
 export default function Hero() {
   const sectionRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start start", "end start"],
+    offset: ['start start', 'end start'],
   });
-
   const y = useTransform(scrollYProgress, [0, 1], [0, 100]);
 
   const [index, setIndex] = useState(0);
-
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % headings.length);
-    }, 3000); // Change every 3 seconds
+    }, 3000);
     return () => clearInterval(interval);
   }, []);
 
@@ -33,6 +32,8 @@ export default function Hero() {
     <motion.section
       ref={sectionRef}
       style={{ y }}
+      role="banner"
+      aria-labelledby="hero-heading"
       className="min-h-screen flex items-center bg-[#f7f8fa] text-gray-800"
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full">
@@ -46,6 +47,7 @@ export default function Hero() {
             transition={{ duration: 0.6, ease: 'easeOut' }}
           >
             <motion.h1
+              id="hero-heading"
               key={headings[index]}
               className="text-4xl sm:text-5xl font-serif font-medium leading-tight"
               initial={{ opacity: 0, y: 20 }}
@@ -61,17 +63,19 @@ export default function Hero() {
             </p>
 
             <div className="pt-4 flex flex-col sm:flex-row sm:justify-center lg:justify-start gap-4">
-              <a 
-                href="/resume.pdf" 
-                download 
+              <a
+                href="/resume.pdf"
+                download
                 className="inline-block bg-black text-white px-6 py-3 text-sm rounded-full hover:bg-gray-900 transition-all duration-300"
+                aria-label="Download Resume"
               >
                 Download Resume
               </a>
 
-              <a 
-                href="/about" 
-                className="inline-block border border-black text-black px-6 py-3 text-sm rounded-full hover:bg-gray-200 hover:text-black transition-all duration-300"
+              <a
+                href="/about"
+                className="inline-block border border-black text-black px-6 py-3 text-sm rounded-full hover:bg-gray-200 transition-all duration-300"
+                aria-label="Explore My Work"
               >
                 Explore My Work
               </a>
@@ -85,16 +89,20 @@ export default function Hero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
           >
-            <div className="w-64 h-64 sm:w-72 sm:h-72 rounded-full overflow-hidden border-[6px] border-gray-200 shadow-xl mx-auto">
-              <img 
-                src="/assets/pic.png" 
-                alt="Rayan Shafi" 
-                className="w-full h-full object-cover"
-                loading="lazy"
+            <div className="w-64 h-64 sm:w-72 sm:h-72 rounded-full overflow-hidden border-4 border-gray-200 shadow-xl mx-auto">
+              <Image
+                src="/assets/pic.png"
+                alt="Portrait of Rayan Shafi"
+                width={288}
+                height={288}
+                priority
+                placeholder="blur"
+                blurDataURL="/assets/pic-blur.png"
+                className="object-cover"
               />
             </div>
             <div className="text-center mt-6">
-              <p className="text-sm text-gray-600 tracking-wider">FULL STACK DEVELOPER</p>
+              <p className="text-sm text-gray-600 tracking-wider uppercase">FULL STACK DEVELOPER</p>
             </div>
           </motion.div>
 

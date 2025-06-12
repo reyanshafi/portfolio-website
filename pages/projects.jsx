@@ -2,6 +2,8 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import "../app/globals.css";
+import SEO from '@/components/SEO';
+
 
 import { 
   FaReact, 
@@ -89,6 +91,7 @@ const itemVariants = {
 export default function Projects() {
   return (
     <>
+    <SEO />
       <Navbar />
       <main className="bg-[#f7f8fa] text-gray-800 min-h-screen">
         {/* Hero Section */}

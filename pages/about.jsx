@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import "../app/globals.css";
+import SEO from '@/components/SEO';
 
 import {
   FaReact,
@@ -99,6 +100,7 @@ export default function About() {
 
   return (
     <>
+    <SEO />
       <Navbar />
       <main className="bg-[#f7f8fa] text-gray-800 min-h-screen">
         {/* Hero Section */}

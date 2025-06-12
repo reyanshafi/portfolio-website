@@ -5,6 +5,8 @@ import { motion } from 'framer-motion';
 import { toast } from 'react-hot-toast';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import SEO from '@/components/SEO';
+
 import "../app/globals.css";
 
 export default function ContactPage() {
@@ -59,6 +61,7 @@ export default function ContactPage() {
 
   return (
     <>
+    <SEO />
       <Navbar />
       <main className="bg-[#f7f8fa] text-gray-800 min-h-screen">
         {/* Hero Section */}
