@@ -26,6 +26,7 @@ export default function RootLayout({ children }) {
     <html lang="en" suppressHydrationWarning>
       <head>
                 <SEO />
+                <meta name="google-site-verification" content="qT9R3oBiu0hF0Zx3yP70XVcQdK26E4LsQORulDPaMjE" />
 
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
