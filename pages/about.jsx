@@ -72,6 +72,7 @@ const skills = [
   },
 ];
 
+// Added Freelance entry here
 const experiences = [
   {
     role: "Full Stack Intern",
@@ -79,12 +80,25 @@ const experiences = [
     icon: <FaBriefcase className="text-blue-600 text-xl" />,
     period: "2023 - 2024",
     points: [
-      "Developed scalable front-end and back-end components",
+      "Developed scalable front‑end and back‑end components",
       "Integrated RESTful APIs improving efficiency by 25%",
       "Ensured seamless user interactions and consistent functionality",
     ],
   },
+  {
+    role: "Freelance Web Developer",
+    company: "Self‑Employed",
+    icon: <FaBriefcase className="text-blue-600 text-xl" />,
+    period: "2024 – Present",
+    points: [
+      "Built responsive websites using React.js, Next.js, and Tailwind CSS",
+      "Integrated Supabase and PostgreSQL for real‑time data management",
+      "Implemented Razorpay payment gateway and automated email notifications",
+    ],
+  },
 ];
+
+
 
 export default function About() {
   const iconMap = useIconMap();
@@ -100,7 +114,7 @@ export default function About() {
 
   return (
     <>
-    <SEO />
+      <SEO />
       <Navbar />
       <main className="bg-[#f7f8fa] text-gray-800 min-h-screen">
         {/* Hero Section */}
@@ -180,7 +194,7 @@ export default function About() {
             </div>
           </motion.section>
 
-          {/* Experience */}
+          {/* Professional Experience */}
           <motion.section
             initial="hidden"
             whileInView="visible"

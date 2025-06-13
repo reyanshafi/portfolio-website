@@ -89,7 +89,7 @@ export default function Hero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
           >
-            <div className="w-64 h-64 sm:w-72 sm:h-72 rounded-full overflow-hidden border-4 border-gray-200 shadow-xl mx-auto">
+            <div className="w-64  h-64 sm:w-72 sm:h-72 rounded-full overflow-hidden border-4 border-gray-200 shadow-xl mx-auto">
               <Image
                 src="/assets/pic.png"
                 alt="Portrait of Rayan Shafi"
