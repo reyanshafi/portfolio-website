@@ -63,194 +63,161 @@ export default function ContactPage() {
     <>
     <SEO />
       <Navbar />
-      <main className="bg-[#f7f8fa] text-gray-800 min-h-screen">
-        {/* Hero Section */}
-        <section className="min-h-[40vh] flex items-center justify-center border-b border-gray-200">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full text-center py-16">
-            <motion.h1 
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-4xl sm:text-5xl font-serif font-medium mb-4"
-            >
-              Get In <span className="text-gray-900">Touch</span>
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.3, duration: 0.8 }}
-              className="text-gray-600 max-w-md mx-auto text-lg"
-            >
-              Have a project in mind or want to collaborate? Let's talk!
-            </motion.p>
+      <main className="bg-[#1f1f1f] text-white min-h-screen">
+  {/* Hero Section */}
+  <section className="min-h-[40vh] flex items-center justify-center border-b border-gray-800">
+    <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full text-center py-16">
+      <motion.h1 
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="text-4xl sm:text-5xl font-serif font-medium mb-4"
+      >
+        Get In <span className="text-red-600">Touch</span>
+      </motion.h1>
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.3, duration: 0.8 }}
+        className="text-gray-400 max-w-md mx-auto text-lg"
+      >
+        Have a project in mind or want to collaborate? Let's talk!
+      </motion.p>
+    </div>
+  </section>
+
+  {/* Contact Info Section */}
+  <section className="py-16">
+    <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-12">
+      {/* Left Info Box */}
+      <motion.div
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6 }}
+        className="space-y-8"
+      >
+        <div className="flex items-center gap-4">
+          <div className="p-2 bg-red-950 rounded-full">
+            <FaMapMarkerAlt className="text-red-500 text-xl" />
           </div>
-        </section>
+          <h2 className="text-2xl font-serif font-medium">Contact Information</h2>
+        </div>
 
-        {/* Contact Content */}
-        <section className="py-16">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-              {/* Contact Information */}
-              <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
-                className="space-y-8"
-              >
-                <div className="space-y-6">
-                  <div className="flex items-center gap-4">
-                    <div className="p-2 bg-blue-100 rounded-full">
-                      <FaMapMarkerAlt className="text-blue-600 text-xl" />
-                    </div>
-                    <h2 className="text-2xl font-serif font-medium">Contact Information</h2>
-                  </div>
-                  
-                  <div className="space-y-6">
-                    <div className="flex items-start gap-4">
-                      <div className="p-2 bg-blue-100 rounded-full">
-                        <FaMapMarkerAlt className="text-blue-600" />
-                      </div>
-                      <div>
-                        <h3 className="font-medium">Location</h3>
-                        <p className="text-gray-600">
-                          Awantipora, Jammu & Kashmir, India
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-4">
-                      <div className="p-2 bg-blue-100 rounded-full">
-                        <FaPhone className="text-blue-600" />
-                      </div>
-                      <div>
-                        <h3 className="font-medium">Phone</h3>
-                        <a 
-                          href="tel:+919906512509" 
-                          className="text-gray-600 hover:text-blue-600 transition-colors"
-                        >
-                          +91 9906512509
-                        </a>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-4">
-                      <div className="p-2 bg-blue-100 rounded-full">
-                        <FaEnvelope className="text-blue-600" />
-                      </div>
-                      <div>
-                        <h3 className="font-medium">Email</h3>
-                        <a 
-                          href="mailto:reyannshafi@gmail.com" 
-                          className="text-gray-600 hover:text-blue-600 transition-colors"
-                        >
-                          reyannshafi@gmail.com
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="space-y-4">
-                  <div className="flex items-center gap-4">
-                    <div className="p-2 bg-blue-100 rounded-full">
-                      <FaPaperPlane className="text-blue-600 text-xl" />
-                    </div>
-                    <h2 className="text-2xl font-serif font-medium">Availability</h2>
-                  </div>
-                  <p className="text-gray-600">
-                    I'm currently available for freelance work and full-time positions. 
-                    Feel free to contact me for any inquiries or questions.
-                  </p>
-                  <div className="flex items-center gap-2">
-                    <span className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></span>
-                    <span className="text-green-600">Available for work</span>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Contact Form */}
-              <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
-                className="space-y-6"
-              >
-                <div className="flex items-center gap-4">
-                  <div className="p-2 bg-blue-100 rounded-full">
-                    <FaPaperPlane className="text-blue-600 text-xl" />
-                  </div>
-                  <h2 className="text-2xl font-serif font-medium">Send Me a Message</h2>
-                </div>
-                
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div>
-                    <label className="block text-gray-600 mb-2">Your Name</label>
-                    <input
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      className="w-full p-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:outline-none transition-colors"
-                      placeholder="Enter your name"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-gray-600 mb-2">Your Email</label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      className="w-full p-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:outline-none transition-colors"
-                      placeholder="Enter your email"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-gray-600 mb-2">Subject</label>
-                    <input
-                      type="text"
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      className="w-full p-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:outline-none transition-colors"
-                      placeholder="What's this about?"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-gray-600 mb-2">Your Message</label>
-                    <textarea
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      className="w-full p-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:outline-none transition-colors"
-                      placeholder="Hi Rayan, I'd like to talk about..."
-                      rows="5"
-                      required
-                    ></textarea>
-                  </div>
-                  <div>
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
-                    >
-                      {isSubmitting ? 'Sending...' : (
-                        <>
-                          <FaPaperPlane />
-                          Send Message
-                        </>
-                      )}
-                    </button>
-                  </div>
-                </form>
-              </motion.div>
+        <div className="space-y-6 text-gray-400">
+          <div className="flex items-start gap-4">
+            <div className="p-2 bg-red-950 rounded-full">
+              <FaMapMarkerAlt className="text-red-500" />
+            </div>
+            <div>
+              <h3 className="font-medium text-white">Location</h3>
+              <p>Awantipora, Jammu & Kashmir, India</p>
             </div>
           </div>
-        </section>
-      </main>
+
+          <div className="flex items-start gap-4">
+            <div className="p-2 bg-red-950 rounded-full">
+              <FaPhone className="text-red-500" />
+            </div>
+            <div>
+              <h3 className="font-medium text-white">Phone</h3>
+              <a href="tel:+919906512509" className="hover:text-red-500 transition-colors">
+                +91 9906512509
+              </a>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-4">
+            <div className="p-2 bg-red-950 rounded-full">
+              <FaEnvelope className="text-red-500" />
+            </div>
+            <div>
+              <h3 className="font-medium text-white">Email</h3>
+              <a href="mailto:reyannshafi@gmail.com" className="hover:text-red-500 transition-colors">
+                reyannshafi@gmail.com
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div className="space-y-4 text-gray-400">
+          <div className="flex items-center gap-4">
+            <div className="p-2 bg-red-950 rounded-full">
+              <FaPaperPlane className="text-red-500 text-xl" />
+            </div>
+            <h2 className="text-2xl font-serif font-medium text-white">Availability</h2>
+          </div>
+          <p>
+            I'm currently available for freelance work and full-time positions.
+            Feel free to contact me for any inquiries or questions.
+          </p>
+          <div className="flex items-center gap-2">
+            <span className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></span>
+            <span className="text-green-500">Available for work</span>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Contact Form */}
+      <motion.div
+        initial={{ opacity: 0, x: 50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6 }}
+        className="space-y-6"
+      >
+        <div className="flex items-center gap-4">
+          <div className="p-2 bg-red-950 rounded-full">
+            <FaPaperPlane className="text-red-500 text-xl" />
+          </div>
+          <h2 className="text-2xl font-serif font-medium">Send Me a Message</h2>
+        </div>
+
+        <form onSubmit={handleSubmit} className="space-y-6">
+          {["name", "email", "subject"].map((field, i) => (
+            <div key={i}>
+              <label className="block text-gray-400 mb-2 capitalize">{field}</label>
+              <input
+                type={field === "email" ? "email" : "text"}
+                name={field}
+                value={formData[field]}
+                onChange={handleChange}
+                className="w-full p-3 rounded-lg bg-[#2a2a2a] text-white border border-gray-600 focus:border-red-500 focus:outline-none"
+                placeholder={`Enter your ${field}`}
+                required
+              />
+            </div>
+          ))}
+          <div>
+            <label className="block text-gray-400 mb-2">Your Message</label>
+            <textarea
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              className="w-full p-3 rounded-lg bg-[#2a2a2a] text-white border border-gray-600 focus:border-red-500 focus:outline-none"
+              placeholder="Hi Rayan, I'd like to talk about..."
+              rows="5"
+              required
+            ></textarea>
+          </div>
+          <div>
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-red-600 text-white rounded-lg font-medium hover:bg-red-700 transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
+            >
+              {isSubmitting ? "Sending..." : (
+                <>
+                  <FaPaperPlane />
+                  Send Message
+                </>
+              )}
+            </button>
+          </div>
+        </form>
+      </motion.div>
+    </div>
+  </section>
+</main>
+
       <Footer />
     </>
   );

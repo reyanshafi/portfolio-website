@@ -34,7 +34,7 @@ export default function Hero() {
       style={{ y }}
       role="banner"
       aria-labelledby="hero-heading"
-      className="min-h-screen flex items-center bg-[#f7f8fa] text-gray-800"
+      className="min-h-screen flex items-center bg-[#1f1f1f] text-white"
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12 py-20">
@@ -49,7 +49,7 @@ export default function Hero() {
             <motion.h1
               id="hero-heading"
               key={headings[index]}
-              className="text-4xl sm:text-5xl font-serif font-medium leading-tight"
+              className="text-4xl sm:text-5xl font-serif font-medium leading-tight text-red-600"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
@@ -58,15 +58,15 @@ export default function Hero() {
               {headings[index]}
             </motion.h1>
 
-            <p className="text-gray-600 max-w-md mx-auto lg:mx-0 text-base leading-relaxed">
-              I’m a <strong className="text-black">Full-Stack Developer</strong> crafting seamless UI, scalable APIs, and practical solutions across the web.
+            <p className="text-gray-300 max-w-md mx-auto lg:mx-0 text-base leading-relaxed">
+              I’m a <strong className="text-white">Full-Stack Developer</strong> crafting seamless UI, scalable APIs, and practical solutions across the web.
             </p>
 
             <div className="pt-4 flex flex-col sm:flex-row sm:justify-center lg:justify-start gap-4">
               <a
                 href="/resume.pdf"
                 download
-                className="inline-block bg-black text-white px-6 py-3 text-sm rounded-full hover:bg-gray-900 transition-all duration-300"
+                className="inline-block bg-red-600 text-white px-6 py-3 text-sm rounded-full hover:bg-red-700 transition-all duration-300"
                 aria-label="Download Resume"
               >
                 Download Resume
@@ -74,7 +74,7 @@ export default function Hero() {
 
               <a
                 href="/about"
-                className="inline-block border border-black text-black px-6 py-3 text-sm rounded-full hover:bg-gray-200 transition-all duration-300"
+                className="inline-block border border-white text-white px-6 py-3 text-sm rounded-full hover:bg-red-600 hover:border-red-600 transition-all duration-300"
                 aria-label="Explore My Work"
               >
                 Explore My Work
@@ -89,7 +89,7 @@ export default function Hero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
           >
-            <div className="w-64  h-64 sm:w-72 sm:h-72 rounded-full overflow-hidden border-4 border-gray-200 shadow-xl mx-auto">
+            <div className="w-64 h-64 sm:w-72 sm:h-72 rounded-full overflow-hidden border-4 border-gray-700 shadow-xl mx-auto">
               <Image
                 src="/assets/pic.png"
                 alt="Portrait of Rayan Shafi"
@@ -102,7 +102,7 @@ export default function Hero() {
               />
             </div>
             <div className="text-center mt-6">
-              <p className="text-sm text-gray-600 tracking-wider uppercase">FULL STACK DEVELOPER</p>
+              <p className="text-sm text-white tracking-wider uppercase">RAYAN SHAFI</p>
             </div>
           </motion.div>
 

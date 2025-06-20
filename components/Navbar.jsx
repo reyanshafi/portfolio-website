@@ -17,7 +17,6 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close menu when navigating
   useEffect(() => {
     setMenuOpen(false);
   }, [pathname]);
@@ -31,17 +30,17 @@ export default function Navbar() {
   ];
 
   const bgClass = (isScrolled || menuOpen)
-    ? 'bg-white shadow-sm border-b border-gray-200'
-    : 'bg-white';
+    ? 'bg-[#1f1f1f] shadow-sm border-b border-gray-700'
+    : 'bg-[#1f1f1f]';
 
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${bgClass}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
 
-          {/* Logo - Left */}
-          <Link href="/" className="text-gray-900 text-xl font-semibold uppercase tracking-wider hover:text-black transition-all duration-300">
-            Rayan<span className="text-gray-600">Shafi</span>
+          {/* Logo */}
+          <Link href="/" className="text-white text-xl font-semibold uppercase tracking-wider hover:text-red-400 transition-all duration-300">
+            Rayan<span className="text-red-600">Shafi</span>
           </Link>
 
           {/* Desktop Links */}
@@ -52,8 +51,8 @@ export default function Navbar() {
                 href={link.href}
                 className={`transition-all duration-200 border-b-2 ${
                   pathname === link.href
-                    ? 'text-black border-gray-900'
-                    : 'text-gray-500 border-transparent hover:text-black hover:border-gray-300'
+                    ? 'text-red-600 border-red-600'
+                    : 'text-white border-transparent hover:text-red-400 hover:border-red-400'
                 }`}
               >
                 {link.label}
@@ -61,21 +60,21 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Desktop Resume Button */}
+          {/* Resume Button */}
           <div className="hidden md:flex">
             <a
               href="/resume.pdf"
               download
-              className="bg-black text-white px-4 py-2 text-sm font-medium hover:bg-gray-800 transition-all duration-300"
+              className="bg-red-600 text-white px-4 py-2 text-sm font-medium hover:bg-red-700 transition-all duration-300"
             >
               Download CV
             </a>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Toggle */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden text-gray-700 focus:outline-none"
+            className="md:hidden text-white focus:outline-none"
             aria-label="Toggle menu"
           >
             {menuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
@@ -83,30 +82,29 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu - slides from right */}
+      {/* Mobile Menu */}
       <div
-        className={`fixed top-0 right-0 h-full w-64 bg-white shadow-md border-l border-gray-200 transform transition-transform duration-300 ease-in-out
+        className={`fixed top-0 right-0 h-full w-64 bg-[#1f1f1f] shadow-md border-l border-gray-700 transform transition-transform duration-300 ease-in-out
           ${menuOpen ? 'translate-x-0' : 'translate-x-full'}
         `}
       >
-        {/* Close Button inside menu */}
         <button
           onClick={() => setMenuOpen(false)}
-          className="absolute top-4 right-4 text-gray-700 hover:text-black focus:outline-none"
+          className="absolute top-4 right-4 text-white hover:text-red-400 focus:outline-none"
           aria-label="Close menu"
         >
           <FaTimes size={20} />
         </button>
 
-        <div className="flex flex-col space-y-6 px-6 pt-16 pb-10 text-gray-700 font-light tracking-wide h-full">
+        <div className="flex flex-col space-y-6 px-6 pt-16 pb-10 text-white font-light tracking-wide h-full">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               className={`block py-2 text-lg ${
                 pathname === link.href
-                  ? 'text-black font-semibold'
-                  : 'text-gray-600 hover:text-black'
+                  ? 'text-red-400 font-semibold'
+                  : 'text-white hover:text-red-400'
               }`}
               onClick={() => setMenuOpen(false)}
             >
@@ -116,7 +114,7 @@ export default function Navbar() {
           <a
             href="/resume.pdf"
             download
-            className="mt-auto inline-block bg-black text-white px-6 py-2 text-sm font-medium hover:bg-gray-800 transition-all duration-300"
+            className="mt-auto inline-block bg-red-500 text-white px-6 py-2 text-sm font-medium hover:bg-red-600 transition-all duration-300"
             onClick={() => setMenuOpen(false)}
           >
             Download CV

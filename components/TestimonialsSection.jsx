@@ -1,4 +1,5 @@
-'use client'
+'use client';
+
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaQuoteLeft, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
@@ -64,13 +65,13 @@ export default function TestimonialsSection() {
   };
 
   return (
-    <section className="py-16 bg-[#f7f8fa] border-t border-b border-gray-200">
+    <section className="py-20 bg-[#1f1f1f] border-t border-gray-800">
       <div className="max-w-4xl mx-auto px-6 lg:px-8">
-        <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-4xl font-serif font-medium text-gray-900 mb-2">
-            Client <span className="text-black font-normal">Feedback</span>
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-serif font-light text-white mb-2">
+            Client <span className="text-red-600 font-medium">Feedback</span>
           </h2>
-          <p className="text-gray-600 text-base">
+          <p className="text-gray-400 text-sm">
             Insights from those I've collaborated with
           </p>
         </div>
@@ -86,35 +87,38 @@ export default function TestimonialsSection() {
               exit="exit"
               className="absolute inset-0"
             >
-              <div className="border border-gray-200 rounded-md px-6 py-8 bg-white h-full flex flex-col justify-center shadow-md">
-                <FaQuoteLeft className="text-gray-900 text-xl mb-4" />
-                <blockquote className="text-gray-800 text-lg font-serif italic mb-5">
+              <div className="border border-gray-700 rounded-lg px-6 py-8 bg-[#2a2a2a] h-full flex flex-col justify-center shadow-md">
+                <FaQuoteLeft className="text-red-600 text-xl mb-4" />
+                <blockquote className="text-gray-100 text-lg font-serif italic mb-5">
                   "{testimonials[currentIndex].quote}"
                 </blockquote>
-                <div className="text-sm text-gray-600">
-                  <span className="font-semibold">{testimonials[currentIndex].author}</span> &middot; {testimonials[currentIndex].role}
+                <div className="text-sm text-gray-400">
+                  <span className="font-semibold text-white">{testimonials[currentIndex].author}</span>
+                  {' '}· {testimonials[currentIndex].role}
                 </div>
               </div>
             </motion.div>
           </AnimatePresence>
 
+          {/* Navigation Arrows */}
           <button
             onClick={() => navigate(-1)}
-            className="absolute left-0 top-1/2 -translate-y-1/2 bg-transparent text-gray-900 hover:text-gray-700 transition-colors p-2 z-10"
+            className="absolute left-0 top-1/2 -translate-y-1/2 bg-red-600 hover:bg-red-700 text-white p-2 rounded-full z-10 transition-colors"
             aria-label="Previous testimonial"
           >
-            <FaChevronLeft size={20} />
+            <FaChevronLeft size={18} />
           </button>
 
           <button
             onClick={() => navigate(1)}
-            className="absolute right-0 top-1/2 -translate-y-1/2 bg-transparent text-gray-900 hover:text-gray-700 transition-colors p-2 z-10"
+            className="absolute right-0 top-1/2 -translate-y-1/2 bg-red-600 hover:bg-red-700 text-white p-2 rounded-full z-10 transition-colors"
             aria-label="Next testimonial"
           >
-            <FaChevronRight size={20} />
+            <FaChevronRight size={18} />
           </button>
 
-          <div className="absolute bottom-[-25] left-1/2 transform -translate-x-1/2 flex pt-20 gap-2 mt-4">
+          {/* Dots */}
+          <div className="absolute bottom-[-25px] left-1/2 transform -translate-x-1/2 flex gap-2 mt-6">
             {testimonials.map((_, index) => (
               <button
                 key={index}
@@ -122,8 +126,8 @@ export default function TestimonialsSection() {
                   setDirection(index > currentIndex ? 1 : -1);
                   setCurrentIndex(index);
                 }}
-                className={`w-3 h-3 rounded-full transition-colors ${
-                  currentIndex === index ? 'bg-gray-900' : 'bg-gray-400'
+                className={`w-2.5 h-2.5 rounded-full transition-colors duration-300 ${
+                  currentIndex === index ? 'bg-red-600' : 'bg-gray-500'
                 }`}
                 aria-label={`Go to testimonial ${index + 1}`}
               />

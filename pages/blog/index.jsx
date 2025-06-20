@@ -10,16 +10,16 @@ export default function BlogIndex({ posts }) {
   return (
     <>
       <Navbar />
-      <main className="bg-[#f7f8fa] text-gray-800 min-h-screen">
+      <main className="bg-[#1f1f1f] text-white min-h-screen">
         <section className="py-20">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             
             {/* Header */}
             <div className="text-center mb-16">
               <h1 className="text-4xl sm:text-5xl font-serif font-medium mb-4">
-                My <span className="text-yellow-500">Blog</span>
+                My <span className="text-red-600">Blog</span>
               </h1>
-              <p className="text-base text-gray-600 max-w-xl mx-auto">
+              <p className="text-base text-gray-400 max-w-xl mx-auto">
                 Thoughts, tutorials, and insights on full-stack development and design.
               </p>
             </div>
@@ -28,7 +28,7 @@ export default function BlogIndex({ posts }) {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
               {posts.map((post) => (
                 <Link key={post.slug} href={`/blog/${post.slug}`} className="group block">
-                  <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
+                  <div className="bg-[#2a2a2a] border border-gray-700 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
                     
                     {post.coverImage && (
                       <div className="relative h-48 w-full">
@@ -46,26 +46,26 @@ export default function BlogIndex({ posts }) {
                         {post.tags.map((tag) => (
                           <span
                             key={tag}
-                            className="px-3 py-1 bg-gray-100 text-xs text-gray-700 rounded-full"
+                            className="px-3 py-1 bg-[#1f1f1f] text-xs text-gray-400 border border-gray-600 rounded-full"
                           >
                             {tag}
                           </span>
                         ))}
                       </div>
 
-                      <h2 className="text-xl font-semibold mb-2 group-hover:text-yellow-500 transition-colors">
+                      <h2 className="text-xl font-semibold mb-2 group-hover:text-red-500 transition-colors">
                         {post.title}
                       </h2>
 
-                      <p className="text-sm text-gray-500 mb-4">{post.excerpt}</p>
+                      <p className="text-sm text-gray-400 mb-4">{post.excerpt}</p>
 
-                      <div className="flex items-center justify-between text-xs text-gray-400">
+                      <div className="flex items-center justify-between text-xs text-gray-500">
                         <div className="flex items-center gap-2">
-                          <FaCalendarAlt />
+                          <FaCalendarAlt className="text-red-500" />
                           <span>{post.date}</span>
                         </div>
                         <div className="flex items-center gap-2">
-                          <FaClock />
+                          <FaClock className="text-red-500" />
                           <span>{post.readingTime} min read</span>
                         </div>
                       </div>

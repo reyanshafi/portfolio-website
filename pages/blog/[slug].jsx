@@ -11,16 +11,16 @@ export default function BlogPost({ post }) {
   return (
     <>
       <Navbar />
-      <main className="bg-[#f7f8fa] text-gray-800 min-h-screen">
+      <main className="bg-[#1f1f1f] text-white min-h-screen">
         <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
           <header className="mb-12 text-center">
             <div className="flex flex-wrap justify-center gap-3 mb-6">
               {post.tags.map((tag) => (
                 <span 
                   key={tag} 
-                  className="px-3 py-1 bg-gray-100 text-xs text-gray-700 rounded-full flex items-center gap-1"
+                  className="px-3 py-1 bg-[#2a2a2a] text-xs text-gray-400 border border-gray-600 rounded-full flex items-center gap-1"
                 >
-                  <FaTag size={10} />
+                  <FaTag size={10} className="text-red-500" />
                   {tag}
                 </span>
               ))}
@@ -30,18 +30,18 @@ export default function BlogPost({ post }) {
             </h1>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-gray-500 text-sm">
               <div className="flex items-center gap-2">
-                <FaCalendarAlt />
+                <FaCalendarAlt className="text-red-500" />
                 <span>{post.date}</span>
               </div>
               <div className="flex items-center gap-2">
-                <FaClock />
+                <FaClock className="text-red-500" />
                 <span>{post.readingTime} min read</span>
               </div>
             </div>
           </header>
 
           {post.coverImage && (
-            <div className="mb-12 rounded-xl overflow-hidden border border-gray-200">
+            <div className="mb-12 rounded-xl overflow-hidden border border-gray-700">
               <img 
                 src={post.coverImage} 
                 alt={post.title} 
@@ -50,7 +50,7 @@ export default function BlogPost({ post }) {
             </div>
           )}
 
-          <div className="prose max-w-none">
+          <div className="prose prose-invert prose-p:text-gray-300 prose-headings:text-white max-w-none">
             <MDXRemote {...post.content} />
           </div>
         </article>

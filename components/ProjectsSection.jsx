@@ -1,156 +1,96 @@
 'use client';
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import { SiNextdotjs, SiNodedotjs, SiReact, SiMongodb, SiTailwindcss } from 'react-icons/si';
+
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 const projects = [
   {
     id: 1,
-    title: "IUST Alumni Connect",
-    description: "Alumni networking platform with admin dashboard",
-    technologies: ["Next.js", "Node.js", "MongoDB"],
-    image: "/assets/alumni.avif",
-    link: "/projects"
+    title: 'IUST Alumni Connect',
+    description: 'Alumni networking platform with admin dashboard.',
+    image: '/assets/alumni.avif',
+    tech: ['Next.js', 'MongoDB', 'Tailwind'],
+    link: '/projects',
   },
   {
     id: 2,
-    title: "Hospital System",
-    description: "AI-powered patient monitoring system",
-    technologies: ["React", "Node.js", "Tailwind"],
-    image: "/assets/hospital.jpg",
-    link: "/projects"
+    title: 'Hospital System',
+    description: 'AI-based hospital monitoring system with real-time patient care.',
+    image: '/assets/hospital.jpg',
+    tech: ['React', 'Express', 'Node.js'],
+    link: '/projects',
   },
   {
     id: 3,
-    title: "Suwida Tour & Travels",
-    description: "Tour booking with payment integration",
-    technologies: ["Next.js", "Tailwind", "MongoDB"],
-    image: "/assets/travel.jpg",
-    link: "/projects"
-  }
+    title: 'Suwida Tours',
+    description: 'Online travel booking with payment and admin dashboard.',
+    image: '/assets/travel.jpg',
+    tech: ['Next.js', 'Supabase', 'Razorpay'],
+    link: '/projects',
+  },
 ];
 
-const techIcons = {
-  "Next.js": <SiNextdotjs className="text-black" />,
-  "Node.js": <SiNodedotjs className="text-green-600" />,
-  "MongoDB": <SiMongodb className="text-green-500" />,
-  "React": <SiReact className="text-blue-500" />,
-  "Tailwind": <SiTailwindcss className="text-cyan-500" />
-};
-
-const variants = {
-  enter: (direction) => ({ x: direction > 0 ? 100 : -100, opacity: 0 }),
-  center: { x: 0, opacity: 1 },
-  exit: (direction) => ({ x: direction < 0 ? 100 : -100, opacity: 0 }),
-};
-
-export default function ProjectCarousel() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState(0);
-
-  const navigate = (newDirection) => {
-  setDirection(newDirection);
-  setCurrentIndex((prev) =>
-    newDirection > 0
-      ? (prev + 1) % projects.length
-      : (prev - 1 + projects.length) % projects.length
-  );
-};
-
-
+export default function ScrollProjects() {
   return (
-    <section className="py-20 bg-white border-t border-gray-200">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-light text-gray-800 font-serif mb-2">
-            Featured <span className="font-medium text-black">Work</span>
-          </h2>
-          <p className="text-gray-500 text-sm max-w-xl mx-auto">
-            A curated selection of real-world projects that reflect my development skillset.
-          </p>
-        </div>
+    <section className="bg-[#1f1f1f] text-white py-24 px-6">
+      <div className="max-w-5xl mx-auto">
+        <h2 className="text-3xl sm:text-4xl font-light text-white font-serif mb-2 text-center">
+          Featured <span className="font-medium text-red-600">Work</span>
+        </h2>
+        <p className="text-gray-400 text-sm max-w-xl mx-auto mb-16 text-center">
+          A curated selection of real-world projects that reflect my development skillset.
+        </p>
 
-        <div className="relative h-[500px]">
-          <AnimatePresence custom={direction} mode="popLayout">
-            <motion.a
-              key={projects[currentIndex].id}
-              href={projects[currentIndex].link}
-              custom={direction}
-              variants={variants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{ duration: 0.4 }}
-              className="block h-full will-change-transform"
+        <div className="space-y-32">
+          {projects.map((project, index) => (
+            <motion.div
+              key={project.id}
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className={`flex flex-col lg:flex-row items-center gap-10 ${
+                index % 2 === 1 ? 'lg:flex-row-reverse' : ''
+              }`}
             >
-              <div className="h-full bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden">
-                <div className="h-2/3 relative">
-                  <Image
-                    src={projects[currentIndex].image}
-                    alt={projects[currentIndex].title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover rounded-t-xl"
-                    priority
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-lg font-semibold text-gray-800 mb-1">
-                    {projects[currentIndex].title}
-                  </h3>
-                  <p className="text-gray-500 text-sm mb-4">
-                    {projects[currentIndex].description}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {projects[currentIndex].technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="flex items-center gap-1.5 px-3 py-1 bg-gray-100 border border-gray-300 text-xs rounded-full text-gray-700"
-                      >
-                        {techIcons[tech]}
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+              {/* Project Image */}
+              <div className="w-full lg:w-1/2 h-64 relative rounded-xl overflow-hidden shadow-lg border border-gray-700">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover"
+                  priority
+                />
               </div>
-            </motion.a>
-          </AnimatePresence>
 
-          {/* Navigation Buttons */}
-          <button
-            onClick={() => navigate(-1)}
-            aria-label="Previous project"
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white p-2 border border-gray-300 rounded-full shadow hover:bg-gray-100 transition-colors z-10"
-          >
-            <FaChevronLeft className="text-gray-800" />
-          </button>
-          <button
-            onClick={() => navigate(1)}
-            aria-label="Next project"
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white p-2 border border-gray-300 rounded-full shadow hover:bg-gray-100 transition-colors z-10"
-          >
-            <FaChevronRight className="text-gray-800" />
-          </button>
+              {/* Project Content */}
+              <div className="w-full lg:w-1/2">
+                <h3 className="text-2xl font-semibold text-red-600 mb-2">
+                  {project.title}
+                </h3>
+                <p className="text-gray-300 text-sm mb-4">{project.description}</p>
 
-          {/* Dots */}
-          <div className="flex justify-center mt-6 gap-1.5">
-            {projects.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => {
-                  setDirection(index > currentIndex ? 1 : -1);
-                  setCurrentIndex(index);
-                }}
-                aria-label={`Go to project ${index + 1}`}
-                className={`w-2.5 h-2.5 rounded-full transition-colors duration-300 ${
-                  currentIndex === index ? 'bg-gray-800' : 'bg-gray-300'
-                }`}
-              />
-            ))}
-          </div>
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {project.tech.map((tech, i) => (
+                    <span
+                      key={i}
+                      className="text-xs px-3 py-1 bg-[#2a2a2a] border border-gray-700 rounded-full"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <a
+                  href={project.link}
+                  className="inline-block bg-red-600 hover:bg-red-700 text-white text-sm px-5 py-2 rounded-full transition-all duration-300"
+                >
+                  Know More →
+                </a>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
