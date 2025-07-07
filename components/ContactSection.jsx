@@ -3,7 +3,7 @@ import { FaEnvelope, FaPhone, FaPaperPlane } from "react-icons/fa";
 
 export default function ContactSection() {
   return (
-    <section id="contact" className="bg-[#1f1f1f] text-white py-20 border-t border-gray-800">
+    <section id="contact" className="bg-[#171717] text-white py-20 border-t border-gray-800">
       <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
         
         {/* Left: Contact Info */}

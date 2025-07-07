@@ -1,4 +1,3 @@
-'use client';
 import { motion } from 'framer-motion';
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -98,7 +97,7 @@ export default function About() {
     <>
       <SEO />
       <Navbar />
-      <main className="bg-[#1f1f1f] text-white min-h-screen">
+      <main className="bg-[#171717] text-white min-h-screen pt-20 md:pt-24">
         <motion.header
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -161,7 +160,7 @@ export default function About() {
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true }}
-                        className="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-700 bg-[#2a2a2a] text-white text-sm hover:border-red-600 transition-all"
+                        className="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-700 bg-[#1a1a1a] text-white text-sm hover:border-red-600 transition-all"
                       >
                         {iconMap[skill]}
                         <span>{skill}</span>
@@ -190,7 +189,7 @@ export default function About() {
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true }}
-                  className="space-y-6 border border-gray-800 rounded-lg p-6 bg-[#2a2a2a]"
+                  className="space-y-6 border border-gray-800 rounded-lg p-6 bg-[#1a1a1a]"
                 >
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                     <div className="flex items-center gap-4">

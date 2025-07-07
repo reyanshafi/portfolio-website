@@ -11,7 +11,7 @@ export default function BlogPost({ post }) {
   return (
     <>
       <Navbar />
-      <main className="bg-[#1f1f1f] text-white min-h-screen">
+      <main className="bg-[#1f1f1f] text-white min-h-screen pt-20 md:pt-24">
         <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
           <header className="mb-12 text-center">
             <div className="flex flex-wrap justify-center gap-3 mb-6">

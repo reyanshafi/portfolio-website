@@ -65,7 +65,7 @@ export default function TestimonialsSection() {
   };
 
   return (
-    <section className="py-20 bg-[#1f1f1f] border-t border-gray-800">
+    <section className="py-20 bg-[#171717] border-t border-gray-800">
       <div className="max-w-4xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-serif font-light text-white mb-2">
@@ -87,7 +87,7 @@ export default function TestimonialsSection() {
               exit="exit"
               className="absolute inset-0"
             >
-              <div className="border border-gray-700 rounded-lg px-6 py-8 bg-[#2a2a2a] h-full flex flex-col justify-center shadow-md">
+              <div className="border border-gray-700 rounded-lg px-6 py-8 bg-[#1a1a1a] h-full flex flex-col justify-center shadow-md">
                 <FaQuoteLeft className="text-red-600 text-xl mb-4" />
                 <blockquote className="text-gray-100 text-lg font-serif italic mb-5">
                   "{testimonials[currentIndex].quote}"

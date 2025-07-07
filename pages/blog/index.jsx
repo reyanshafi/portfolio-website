@@ -10,7 +10,7 @@ export default function BlogIndex({ posts }) {
   return (
     <>
       <Navbar />
-      <main className="bg-[#1f1f1f] text-white min-h-screen">
+      <main className="bg-[#171717] text-white min-h-screen pt-20 md:pt-24">
         <section className="py-20">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             
@@ -28,7 +28,7 @@ export default function BlogIndex({ posts }) {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
               {posts.map((post) => (
                 <Link key={post.slug} href={`/blog/${post.slug}`} className="group block">
-                  <div className="bg-[#2a2a2a] border border-gray-700 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
+                  <div className="bg-[#1a1a1a] border border-gray-700 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
                     
                     {post.coverImage && (
                       <div className="relative h-48 w-full">
@@ -46,7 +46,7 @@ export default function BlogIndex({ posts }) {
                         {post.tags.map((tag) => (
                           <span
                             key={tag}
-                            className="px-3 py-1 bg-[#1f1f1f] text-xs text-gray-400 border border-gray-600 rounded-full"
+                            className="px-3 py-1 bg-[#171717] text-xs text-gray-400 border border-gray-600 rounded-full"
                           >
                             {tag}
                           </span>

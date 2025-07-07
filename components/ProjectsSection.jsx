@@ -1,7 +1,9 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Image from 'next/image';
+import Link from 'next/link';
+import { memo } from 'react';
+import OptimizedImage from './OptimizedImage';
 
 const projects = [
   {
@@ -30,9 +32,9 @@ const projects = [
   },
 ];
 
-export default function ScrollProjects() {
+const ScrollProjects = memo(function ScrollProjects() {
   return (
-    <section className="bg-[#1f1f1f] text-white py-24 px-6">
+    <section className="bg-[#171717] text-white py-24 px-6">
       <div className="max-w-5xl mx-auto">
         <h2 className="text-3xl sm:text-4xl font-light text-white font-serif mb-2 text-center">
           Featured <span className="font-medium text-red-600">Work</span>
@@ -55,12 +57,13 @@ export default function ScrollProjects() {
             >
               {/* Project Image */}
               <div className="w-full lg:w-1/2 h-64 relative rounded-xl overflow-hidden shadow-lg border border-gray-700">
-                <Image
+                <OptimizedImage
                   src={project.image}
                   alt={project.title}
                   fill
                   className="object-cover"
-                  priority
+                  priority={index < 2}
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>
 
@@ -92,7 +95,25 @@ export default function ScrollProjects() {
             </motion.div>
           ))}
         </div>
+
+        {/* View More Projects Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="flex justify-center mt-20"
+        >
+          <Link
+            href="/projects"
+            className="inline-block bg-transparent border-2 border-white text-white hover:bg-red-600 hover:text-white text-sm px-8 py-3 rounded-full transition-all duration-300 font-medium"
+          >
+            View More Projects →
+          </Link>
+        </motion.div>
       </div>
     </section>
   );
-}
+});
+
+export default ScrollProjects;

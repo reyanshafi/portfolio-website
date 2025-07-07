@@ -1,4 +1,3 @@
-'use client';
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import "../app/globals.css";
@@ -127,7 +126,7 @@ export default function Projects() {
     <>
       <SEO />
       <Navbar />
-      <main className="bg-[#1f1f1f] text-white min-h-screen">
+      <main className="bg-[#171717] text-white min-h-screen pt-20 md:pt-24">
         <section className="min-h-[40vh] flex items-center justify-center border-b border-gray-800">
           <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center py-16">
             <motion.h1
@@ -169,7 +168,7 @@ export default function Projects() {
                 whileHover={{ y: -5 }}
                 className="group relative h-full"
               >
-                <div className="h-full bg-[#2a2a2a] rounded-xl border border-gray-700 overflow-hidden shadow-sm group-hover:shadow-md transition-all duration-300 flex flex-col">
+                <div className="h-full bg-[#1a1a1a] rounded-xl border border-gray-700 overflow-hidden shadow-sm group-hover:shadow-md transition-all duration-300 flex flex-col">
                   <div className="p-6 flex-grow space-y-4">
                     <div className="flex justify-between items-start">
                       <h2 className="text-xl font-serif font-medium text-white">
@@ -197,7 +196,7 @@ export default function Projects() {
                         {project.technologies.map((tech, i) => (
                           <div
                             key={i}
-                            className="flex items-center gap-2 bg-[#1f1f1f] px-3 py-1 rounded-full border border-gray-600 text-xs text-white"
+                            className="flex items-center gap-2 bg-[#171717] px-3 py-1 rounded-full border border-gray-600 text-xs text-white"
                           >
                             {techIcons[tech]}
                             <span>{tech}</span>
@@ -222,7 +221,7 @@ export default function Projects() {
                     </div>
                   </div>
 
-                  <div className="px-6 py-4 bg-[#1f1f1f] border-t border-gray-700 flex justify-end items-center gap-4">
+                  <div className="px-6 py-4 bg-[#171717] border-t border-gray-700 flex justify-end items-center gap-4">
                     {project.dashboard && (
                       <a
                         href={project.dashboard}

@@ -1,4 +1,3 @@
-'use client'
 import { useState } from 'react';
 import { FaPaperPlane, FaMapMarkerAlt, FaPhone, FaEnvelope } from 'react-icons/fa';
 import { motion } from 'framer-motion';
@@ -63,7 +62,7 @@ export default function ContactPage() {
     <>
     <SEO />
       <Navbar />
-      <main className="bg-[#1f1f1f] text-white min-h-screen">
+      <main className="bg-[#171717] text-white min-h-screen pt-20 md:pt-24">
   {/* Hero Section */}
   <section className="min-h-[40vh] flex items-center justify-center border-b border-gray-800">
     <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full text-center py-16">
@@ -180,7 +179,7 @@ export default function ContactPage() {
                 name={field}
                 value={formData[field]}
                 onChange={handleChange}
-                className="w-full p-3 rounded-lg bg-[#2a2a2a] text-white border border-gray-600 focus:border-red-500 focus:outline-none"
+                className="w-full p-3 rounded-lg bg-[#1a1a1a] text-white border border-gray-600 focus:border-red-500 focus:outline-none"
                 placeholder={`Enter your ${field}`}
                 required
               />
@@ -192,7 +191,7 @@ export default function ContactPage() {
               name="message"
               value={formData.message}
               onChange={handleChange}
-              className="w-full p-3 rounded-lg bg-[#2a2a2a] text-white border border-gray-600 focus:border-red-500 focus:outline-none"
+              className="w-full p-3 rounded-lg bg-[#1a1a1a] text-white border border-gray-600 focus:border-red-500 focus:outline-none"
               placeholder="Hi Rayan, I'd like to talk about..."
               rows="5"
               required
