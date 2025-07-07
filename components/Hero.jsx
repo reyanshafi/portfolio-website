@@ -31,6 +31,7 @@ export default function Hero() {
   return (
     <motion.section
       ref={sectionRef}
+      id="home"
       style={{ y }}
       role="banner"
       aria-labelledby="hero-heading"

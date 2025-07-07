@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ScrollProgressBar from "@/components/ScrollProgressBar";
 import "../app/globals.css";
 import SEO from '@/components/SEO';
 import OptimizedImage from '@/components/OptimizedImage';
@@ -408,6 +409,7 @@ export default function Projects() {
   return (
     <>
       <SEO />
+      <ScrollProgressBar />
       <Navbar />
       <main className="bg-[#171717] text-white min-h-screen pt-20 md:pt-24">
         {/* Hero Section */}

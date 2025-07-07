@@ -2,6 +2,7 @@ import { Inter, JetBrains_Mono, Outfit } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
+import ScrollProgressBar from "@/components/ScrollProgressBar";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider } from 'next-themes';
@@ -58,10 +59,17 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+        {/* Add cache control meta tags */}
+        <meta httpEquiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+        <meta httpEquiv="Pragma" content="no-cache" />
+        <meta httpEquiv="Expires" content="0" />
       </head>
       <body className={`${inter.variable} ${jetbrainsMono.variable} ${outfit.variable} antialiased`}>
         <ServiceWorkerRegistration />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          {/* Scroll Progress Bar */}
+          <ScrollProgressBar />
+          
           {/* Navbar */}
           <Navbar />
 

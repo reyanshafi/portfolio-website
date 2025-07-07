@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ScrollProgressBar from "@/components/ScrollProgressBar";
 import SEO from '@/components/SEO';
 import OptimizedImage from '@/components/OptimizedImage';
 import "../app/globals.css";
@@ -136,8 +137,9 @@ export default function About() {
   return (
     <>
       <SEO />
+      <ScrollProgressBar />
       <Navbar />
-      <main className="bg-[#171717] text-white min-h-screen pt-20 md:pt-24">
+      <main id="about" className="bg-[#171717] text-white min-h-screen pt-20 md:pt-24">
         {/* Hero Section */}
         <section className="relative py-20 overflow-hidden">
           <div className="absolute inset-0">

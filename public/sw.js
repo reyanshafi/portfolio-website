@@ -1,5 +1,5 @@
 // Service Worker for caching and performance optimization
-const CACHE_NAME = 'portfolio-cache-v1';
+const CACHE_NAME = 'portfolio-cache-v2'; // Updated cache version
 const STATIC_ASSETS = [
   '/',
   '/about',
@@ -44,44 +44,87 @@ self.addEventListener('activate', (event) => {
   self.clients.claim();
 });
 
-// Fetch event - serve from cache with network fallback
+// Fetch event - network-first strategy for HTML and JSON
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
-
-  event.respondWith(
-    caches.match(event.request)
-      .then((cachedResponse) => {
-        if (cachedResponse) {
-          // Serve from cache
-          return cachedResponse;
-        }
-
-        // Network request with caching
-        return fetch(event.request)
-          .then((response) => {
-            // Don't cache non-successful responses
-            if (!response || response.status !== 200 || response.type !== 'basic') {
+  
+  const url = new URL(event.request.url);
+  
+  // Skip Google Analytics and other third-party requests
+  if (!url.origin.includes(self.location.origin)) {
+    return;
+  }
+  
+  // For HTML pages and JSON data - always try network first to get fresh content
+  if (event.request.destination === 'document' || 
+      url.pathname.endsWith('.json') || 
+      url.pathname.startsWith('/api/')) {
+    
+    event.respondWith(
+      fetch(event.request)
+        .then(response => {
+          // Clone the response for caching
+          const responseToCache = response.clone();
+          
+          caches.open(CACHE_NAME)
+            .then(cache => {
+              cache.put(event.request, responseToCache);
+            });
+            
+          return response;
+        })
+        .catch(() => {
+          // If network fails, try the cache
+          return caches.match(event.request)
+            .then(cachedResponse => {
+              if (cachedResponse) {
+                return cachedResponse;
+              }
+              
+              // Fallback for offline HTML pages
+              if (event.request.destination === 'document') {
+                return caches.match('/');
+              }
+              
+              return null;
+            });
+        })
+    );
+  } else {
+    // For other assets (CSS, JS, images) - cache first, then network
+    event.respondWith(
+      caches.match(event.request)
+        .then(cachedResponse => {
+          if (cachedResponse) {
+            // Also fetch from network to update cache in background
+            fetch(event.request)
+              .then(response => {
+                caches.open(CACHE_NAME)
+                  .then(cache => {
+                    cache.put(event.request, response);
+                  });
+              })
+              .catch(() => {/* Ignore failures */});
+              
+            return cachedResponse;
+          }
+          
+          // Not in cache, get from network
+          return fetch(event.request)
+            .then(response => {
+              // Clone the response for caching
+              const responseToCache = response.clone();
+              
+              caches.open(CACHE_NAME)
+                .then(cache => {
+                  cache.put(event.request, responseToCache);
+                });
+                
               return response;
-            }
-
-            // Clone the response for caching
-            const responseToCache = response.clone();
-
-            caches.open(CACHE_NAME)
-              .then((cache) => {
-                cache.put(event.request, responseToCache);
-              });
-
-            return response;
-          })
-          .catch(() => {
-            // Fallback for offline
-            if (event.request.destination === 'document') {
-              return caches.match('/');
-            }
-          });
-      })
-  );
+            });
+        })
+    );
+  }
 });
 
 // Background sync for form submissions

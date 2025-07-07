@@ -157,7 +157,7 @@ const ProjectCard = memo(function ProjectCard({ project, index }) {
 
 const ScrollProjects = memo(function ScrollProjects() {
   return (
-    <section className="bg-[#171717] text-white py-24 px-6 relative overflow-hidden">
+    <section id="projects" className="bg-[#171717] text-white py-24 px-6 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-20 right-20 w-72 h-72 bg-gradient-to-br from-red-500/5 to-purple-600/5 rounded-full blur-3xl"></div>
