@@ -21,6 +21,8 @@ import {
   FaCalendarAlt,
   FaStar,
   FaHeart,
+  FaRobot,
+  FaCogs,
 } from "react-icons/fa";
 import {
   SiTailwindcss,
@@ -30,6 +32,8 @@ import {
   SiPostgresql,
   SiSupabase,
   SiRazorpay,
+  SiFirebase,
+  SiPuppeteer,
 } from "react-icons/si";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -43,11 +47,43 @@ const techIcons = {
   "Supabase": <SiSupabase className="text-lime-400" />,
   "Razorpay": <SiRazorpay className="text-sky-400" />,
   "Tailwind CSS": <SiTailwindcss className="text-cyan-400" />,
+  "Firebase": <SiFirebase className="text-yellow-500" />,
+  "Cheerio": <FaRobot className="text-purple-400" />,
+  "Playwright": <SiPuppeteer className="text-green-500" />,
+  "Cron Jobs": <FaCogs className="text-orange-400" />,
 };
 
 const projects = [
   {
     id: 1,
+    title: "Price Wise - Smart Price Comparison",
+    description: "AI-powered price comparison platform built during Andinolabs hackathon, helping users find the best deals across multiple e-commerce platforms.",
+    technologies: ["React.js", "Next.js", "Node.js", "Firebase", "Cheerio", "Playwright", "Cron Jobs", "Tailwind CSS"],
+    features: [
+      "Real-time price tracking with web scraping",
+      "Automated data collection using Playwright",
+      "Scheduled price updates via Cron Jobs",
+      "AI-powered deal recommendations",
+      "User-friendly comparison interface",
+      "Mobile-responsive design",
+    ],
+    status: "Completed",
+    github: "https://github.com/reyanshafi/price-wise-app",
+    demo: "https://pricewiseweb.vercel.app",
+    dashboard: "https://pricewiseweb.vercel.app",
+    image: "/assets/pricewise.png",
+    category: "Hackathon Project",
+    gradient: "from-yellow-500/20 to-orange-600/20",
+    accentColor: "text-yellow-400",
+    featured: true,
+    year: "2024",
+    duration: "26 hours",
+    team: "Team of 4",
+    likes: 42,
+    hackathon: "Andinolabs Hackathon 2024"
+  },
+  {
+    id: 2,
     title: "IUST Alumni Connect Platform",
     description: "University alumni networking platform with role-based authentication and admin controls.",
     technologies: ["Node.js", "Express.js", "MongoDB"],
@@ -71,7 +107,7 @@ const projects = [
     likes: 24,
   },
   {
-    id: 2,
+    id: 3,
     title: "AI Hospital Management System",
     description: "Comprehensive hospital system with AI-driven patient care monitoring and management.",
     technologies: ["React.js", "Node.js", "MongoDB"],
@@ -95,7 +131,7 @@ const projects = [
     likes: 32,
   },
   {
-    id: 3,
+    id: 4,
     title: "Suwida Tour and Travels",
     description: "Responsive tour booking platform with a full-featured admin panel.",
     technologies: ["React.js", "Next.js", "PostgreSQL", "Supabase", "Razorpay"],
@@ -119,7 +155,7 @@ const projects = [
     likes: 18,
   },
   {
-    id: 4,
+    id: 5,
     title: "Salt Lake Tour & Travels",
     description: "Complete tour platform with booking system and admin dashboard.",
     technologies: ["React.js", "Next.js", "PostgreSQL", "Tailwind CSS"],
@@ -143,7 +179,7 @@ const projects = [
     likes: 15,
   },
   {
-    id: 5,
+    id: 6,
     title: "Personal Portfolio Website",
     description: "A modern, responsive developer portfolio showcasing skills and projects.",
     technologies: ["React.js", "Next.js", "Tailwind CSS"],
@@ -154,7 +190,7 @@ const projects = [
       "Fully responsive layout",
     ],
     status: "Completed",
-    demo: "https://reyannshafi.vercel.app",
+    demo: "https://rayanshafi.vercel.app",
     dashboard: "https://reyannshafi.vercel.app",
     image: "/assets/pic.png",
     category: "Portfolio",
@@ -227,10 +263,15 @@ const ProjectCard = ({ project, index }) => {
               </span>
             </div>
             {/* Year Badge */}
-            <div className="absolute top-4 right-4">
+            <div className="absolute top-4 right-4 flex flex-col gap-2">
               <span className="px-3 py-1 rounded-full text-xs font-medium backdrop-blur-sm bg-black/20 text-white border border-white/20">
                 {project.year}
               </span>
+              {project.hackathon && (
+                <span className="px-3 py-1 rounded-full text-xs font-medium backdrop-blur-sm bg-blue-500/20 text-blue-400 border border-blue-500/30">
+                  Hackathon
+                </span>
+              )}
             </div>
             {/* Like Button */}
             <button
@@ -255,6 +296,12 @@ const ProjectCard = ({ project, index }) => {
               <FaStar className="text-xs" />
               <span>{project.team}</span>
             </div>
+            {project.hackathon && (
+              <div className="flex items-center gap-1">
+                <FaRocket className="text-xs" />
+                <span className="text-blue-400">{project.hackathon}</span>
+              </div>
+            )}
           </div>
         </div>
 
@@ -388,7 +435,7 @@ export default function Projects() {
               </h1>
               
               <p className="text-xl text-gray-400 max-w-3xl mx-auto font-body leading-relaxed">
-                A showcase of my recent work in full-stack development, from healthcare solutions to e-commerce platforms. Each project demonstrates my commitment to clean code, modern design, and user experience.
+                A showcase of my recent work in full-stack development, from hackathon wins to healthcare solutions and e-commerce platforms. Each project demonstrates my commitment to clean code, modern design, and user experience.
               </p>
               
               <div className="flex flex-wrap justify-center gap-6 pt-8">

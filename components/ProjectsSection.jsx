@@ -33,9 +33,9 @@ const projects = [
   },
   {
     id: 3,
-    title: 'Suwida Tours',
+    title: 'Suwida Tour & Travels',
     description: 'Full-featured travel booking platform with secure payment gateway and admin dashboard.',
-    image: '/assets/travel.jpg',
+    image: '/assets/suwida.jpg',
     tech: ['Next.js', 'Supabase', 'Razorpay'],
     link: '/projects',
     gradient: 'from-purple-500/20 to-pink-600/20',

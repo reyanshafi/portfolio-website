@@ -1,0 +1,251 @@
+---
+title: "Building Price Wise: My Andinolabs Hackathon Journey"
+date: "2025-01-07"
+excerpt: "From ideation to deployment in 26 hours - the story of creating an AI-powered price comparison platform during the Andinolabs hackathon with a team of passionate developers."
+coverImage: "/assets/pricewise.png"
+tags: ["Hackathon", "React", "Firebase", "Web Scraping", "Team Collaboration", "Full-Stack"]
+---
+
+## The Beginning: 26 Hours to Build Something Amazing
+
+When I heard about the **Andinolabs Hackathon 2024**, I knew this was my chance to push boundaries, collaborate with talented developers, and build something that could make a real difference. Little did I know that in just 26 hours, our team would create **Price Wise** - an AI-powered price comparison platform that would become one of my most technically challenging projects.
+
+---
+
+## The Challenge: E-commerce Price Transparency
+
+The problem was clear: online shoppers struggle to find the best deals across multiple platforms. Manually comparing prices is time-consuming and often leads to missed opportunities. We needed to create a solution that would:
+
+- **Automatically track prices** across different e-commerce sites
+- **Provide real-time updates** when prices change
+- **Offer intelligent recommendations** based on user preferences
+- **Present data in a clean, user-friendly interface**
+
+---
+
+## The Team: Four Minds, One Vision
+
+Our team of four brought diverse skills to the table:
+- **Frontend Development** (React.js & Next.js)
+- **Backend Architecture** (Node.js & Firebase)
+- **Web Scraping & Automation** (Playwright & Cheerio)
+- **UI/UX Design** (Tailwind CSS)
+
+The beauty of hackathons lies in how quickly strangers can become collaborators, each contributing their expertise toward a common goal.
+
+---
+
+## The Tech Stack: Choosing the Right Tools
+
+### Frontend: React.js + Next.js
+We chose Next.js for its:
+- **Server-side rendering** for better SEO
+- **Built-in API routes** for seamless backend integration
+- **Optimized performance** out of the box
+
+### Backend: Node.js + Firebase
+Firebase provided:
+- **Real-time database** for instant price updates
+- **Authentication** for user management
+- **Scalable hosting** without server management overhead
+
+### Web Scraping: Playwright + Cheerio
+The core functionality required:
+- **Playwright** for browser automation and dynamic content
+- **Cheerio** for server-side HTML parsing
+- **Cron Jobs** for scheduled price monitoring
+
+### Styling: Tailwind CSS
+For rapid UI development with:
+- **Utility-first classes** for quick styling
+- **Responsive design** without media queries
+- **Consistent design system** across components
+
+---
+
+## The Development Process: Racing Against Time
+
+### Day 1: Foundation and Architecture
+- **Hour 1-4:** Team formation and project planning
+- **Hour 5-12:** Setting up the development environment
+- **Hour 13-20:** Building core scraping functionality
+- **Hour 21-26:** Implementing the React frontend, Firebase integration, and final deployment
+
+The compressed timeline meant we had to be incredibly efficient with our development process, prioritizing core functionality and seamless team collaboration.
+
+---
+
+## Technical Challenges We Overcame
+
+### 1. **Dynamic Content Scraping**
+Many e-commerce sites load prices dynamically with JavaScript. We solved this using Playwright's browser automation:
+
+```javascript
+// Simplified example of our scraping approach
+const browser = await playwright.chromium.launch();
+const page = await browser.newPage();
+await page.goto(productUrl);
+await page.waitForSelector('.price-selector');
+const price = await page.textContent('.price-selector');
+```
+
+### 2. **Rate Limiting and Anti-Bot Measures**
+We implemented:
+- **Rotating user agents** to avoid detection
+- **Request delays** to respect server limits
+- **Proxy rotation** for distributed scraping
+
+### 3. **Real-time Price Updates**
+Using Firebase's real-time database, we achieved:
+- **Instant notifications** when prices drop
+- **Live dashboard updates** without page refresh
+- **Efficient data synchronization** across all clients
+
+---
+
+## The Results: What We Built
+
+**Price Wise** became a fully functional platform featuring:
+
+### Core Features
+- ✅ **Real-time price tracking** across multiple platforms
+- ✅ **Automated data collection** with smart scraping
+- ✅ **Scheduled price updates** via cron jobs
+- ✅ **AI-powered deal recommendations**
+- ✅ **User-friendly comparison interface**
+- ✅ **Mobile-responsive design**
+
+### Technical Achievements
+- **Scalable architecture** ready for production
+- **Clean, maintainable code** with proper documentation
+- **Responsive UI** that works on all devices
+- **Real-time data synchronization**
+- **Automated testing** for reliability
+
+---
+
+## Lessons Learned: Beyond the Code
+
+### 1. **Team Collaboration is Everything**
+The hackathon taught me that technical skills alone don't win - it's how well you work with others under pressure. We used:
+- **Git for version control** with clear branching strategies
+- **Slack for communication** with dedicated channels
+- **Figma for design collaboration** and quick mockups
+
+### 2. **MVP Mindset**
+With limited time, we had to prioritize ruthlessly:
+- **Core functionality first** - price comparison before nice-to-haves
+- **User experience over perfection** - smooth UX beats pixel-perfect design
+- **Deployment early** - getting something live quickly for testing
+
+### 3. **Documentation Matters**
+Even in a fast-paced environment, we maintained:
+- **Clear commit messages** for code tracking
+- **README files** for easy setup
+- **API documentation** for team coordination
+
+---
+
+## The Technology Deep Dive
+
+### Web Scraping Architecture
+Our scraping system was built with reliability in mind:
+
+```javascript
+// Cron job for scheduled price updates
+const schedule = require('node-cron');
+
+schedule.schedule('0 */6 * * *', async () => {
+  console.log('Starting price update job...');
+  await updateAllPrices();
+  console.log('Price update completed');
+});
+```
+
+### Firebase Integration
+Real-time updates were crucial for user experience:
+
+```javascript
+// Real-time price monitoring
+const priceRef = firebase.database().ref('prices');
+priceRef.on('value', (snapshot) => {
+  const prices = snapshot.val();
+  updateUI(prices);
+});
+```
+
+---
+
+## Deployment and Going Live
+
+We deployed **Price Wise** to Vercel for:
+- **Fast global CDN** for optimal performance
+- **Automatic deployments** from GitHub
+- **Environment variable management** for API keys
+- **Custom domain** support for professional presentation
+
+**Live Demo:** [pricewiseweb.vercel.app](https://pricewiseweb.vercel.app)
+
+---
+
+## Reflections: What This Experience Taught Me
+
+### Technical Growth
+- **Full-stack development** under extreme time pressure
+- **Web scraping** and automation techniques
+- **Real-time applications** with Firebase
+- **Team-based development** workflows
+
+### Soft Skills
+- **Problem-solving** under tight deadlines
+- **Communication** in high-pressure environments
+- **Adaptability** when initial plans don't work
+- **Presentation skills** for demo day
+
+### The Bigger Picture
+This hackathon reinforced my belief that the best solutions come from understanding real user problems. Price Wise wasn't just a technical exercise - it was about creating something that genuinely helps people save money and time.
+
+---
+
+## What's Next for Price Wise?
+
+While the hackathon is over, the project continues to evolve:
+
+### Planned Features
+- **Mobile app** for on-the-go price checking
+- **Browser extension** for instant price comparisons
+- **Advanced AI algorithms** for better recommendations
+- **Social features** for sharing deals with friends
+
+### Technical Improvements
+- **Performance optimization** for faster loading
+- **Database scaling** for more products
+- **Machine learning** for price prediction
+- **API development** for third-party integrations
+
+---
+
+## Final Thoughts: The Hackathon Spirit
+
+The Andinolabs hackathon reminded me why I love development - it's not just about writing code, it's about solving problems and creating value. In 26 hours, we went from strangers with an idea to a team with a working product.
+
+The experience taught me that with the right mindset, tools, and team, anything is possible. Whether you're a student, professional, or hobbyist, hackathons offer a unique opportunity to push your limits and create something amazing.
+
+**To future hackathon participants:** Don't just focus on winning - focus on learning, building, and connecting with fellow developers. The real prize is the growth you'll experience and the relationships you'll build.
+
+---
+
+*Want to learn more about Price Wise or discuss hackathon experiences? Connect with me on [LinkedIn](https://linkedin.com/in/reyanshafi) or check out the project on [GitHub](https://github.com/reyanshafi/price-wise-app).*
+
+---
+
+## Resources and Tools Used
+
+- **[React.js](https://reactjs.org/)** - Frontend framework
+- **[Next.js](https://nextjs.org/)** - React framework with SSR
+- **[Firebase](https://firebase.google.com/)** - Backend-as-a-Service
+- **[Playwright](https://playwright.dev/)** - Browser automation
+- **[Cheerio](https://cheerio.js.org/)** - Server-side HTML parsing
+- **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS
+- **[Vercel](https://vercel.com/)** - Deployment platform
+- **[Node-cron](https://www.npmjs.com/package/node-cron)** - Task scheduling
