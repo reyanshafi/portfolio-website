@@ -114,7 +114,7 @@ const Navbar = memo(function Navbar() {
           <a
             href={resumeLink.href}
             download
-            className="flex items-center justify-center w-12 h-12 rounded-full bg-red-600 text-white hover:bg-red-700 transition-all duration-300"
+            className="flex items-center justify-center w-12 h-12 rounded-full bg-white/90 text-red-600 hover:bg-red-700 transition-all duration-300"
             title={resumeLink.label}
           >
             <resumeLink.icon size={18} />
