@@ -112,16 +112,16 @@ export default function Hero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
           >
-            <div className="w-64 h-64 sm:w-72 sm:h-72 rounded-full overflow-hidden shadow-2xl drop-shadow-2xl mx-auto animate-smooth">
+            <div className="w-80 h-80 sm:w-96 sm:h-96 lg:w-[28rem] lg:h-[28rem] mx-auto">
               <OptimizedImage
-                src="/assets/pic.png"
+                src="/assets/pic2.png" // updated to new profile photo
                 alt="Portrait of Rayan Shafi"
-                width={288}
-                height={288}
+                width={448}
+                height={448}
                 priority
                 quality={90}
-                sizes="(max-width: 768px) 256px, 288px"
-                className="object-cover"
+                sizes="(max-width: 640px) 320px, (max-width: 768px) 384px, 448px"
+                className="object-cover w-full h-full"
               />
             </div>
             <div className="text-center mt-6">
