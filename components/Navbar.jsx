@@ -63,7 +63,7 @@ const Navbar = memo(function Navbar() {
                 height={40}
                 className="w-10 h-10 object-cover"
               />
-              <span>Rayan <span className="text-red-600">Shafi</span></span>
+              <span>Rayan <span className="text-red-600 font-extrabold">Shafi</span></span>
             </Link>
 
             {/* Social Media Links - Desktop Center */}

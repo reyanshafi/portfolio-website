@@ -1,14 +1,21 @@
 'use client';
 
-import { FaReact, FaNodeJs, FaDatabase, FaCode, FaFire } from "react-icons/fa";
+import { FaReact, FaNodeJs, FaDatabase, FaCode, FaFire, FaDocker, FaGitAlt, FaGithub, FaCreditCard, FaRobot, FaJava, FaPython } from "react-icons/fa";
 import {
   SiTailwindcss,
   SiNextdotjs,
   SiTypescript,
   SiJavascript,
-  SiGraphql,
+  SiPostgresql,
+  SiFirebase,
   SiExpress,
-  SiFigma
+  SiFigma,
+  SiPostman,
+  SiBootstrap,
+  SiVercel,
+  SiCanva,
+  SiC,
+  SiCplusplus
 } from "react-icons/si";
 
 import { motion } from "framer-motion";
@@ -16,14 +23,25 @@ import { motion } from "framer-motion";
 // Skill categories with icons
 const skillCategories = [
   {
+    category: "Programming Languages",
+    icon: <FaCode className="text-blue-500" />,
+    skills: [
+      { name: "JavaScript", icon: <SiJavascript className="text-yellow-400" />, level: 85 },
+      { name: "Python", icon: <FaPython className="text-blue-600" />, level: 50 },
+      { name: "Java", icon: <FaJava className="text-red-600" />, level: 50 },
+      { name: "C++", icon: <SiCplusplus className="text-blue-700" />, level: 85 },
+      { name: "C", icon: <SiC className="text-gray-600" />, level: 85 },
+    ]
+  },
+  {
     category: "Frontend",
-    icon: <FaCode className="text-purple-500" />,
+    icon: <FaReact className="text-blue-400" />,
     skills: [
       { name: "React", icon: <FaReact className="text-blue-400" />, level: 90 },
       { name: "Next.js", icon: <SiNextdotjs className="text-white" />, level: 85 },
-      { name: "TypeScript", icon: <SiTypescript className="text-blue-500" />, level: 80 },
-      { name: "JavaScript", icon: <SiJavascript className="text-yellow-400" />, level: 95 },
       { name: "Tailwind CSS", icon: <SiTailwindcss className="text-cyan-400" />, level: 90 },
+      { name: "Bootstrap", icon: <SiBootstrap className="text-purple-600" />, level: 80 },
+      { name: "Framer Motion", icon: <SiTypescript className="text-blue-500" />, level: 80 },
     ]
   },
   {
@@ -31,9 +49,10 @@ const skillCategories = [
     icon: <FaNodeJs className="text-green-500" />,
     skills: [
       { name: "Node.js", icon: <FaNodeJs className="text-green-600" />, level: 85 },
-      { name: "Express", icon: <SiExpress className="text-gray-300" />, level: 80 },
-      { name: "MongoDB", icon: <FaDatabase className="text-green-400" />, level: 75 },
-      { name: "GraphQL", icon: <SiGraphql className="text-pink-500" />, level: 70 },
+      { name: "Express.js", icon: <SiExpress className="text-gray-300" />, level: 85 },
+      { name: "MongoDB", icon: <FaDatabase className="text-green-400" />, level: 80 },
+      { name: "PostgreSQL", icon: <SiPostgresql className="text-blue-500" />, level: 75 },
+      { name: "Firebase", icon: <SiFirebase className="text-orange-500" />, level: 75 },
       { name: "REST APIs", icon: <FaCode className="text-purple-400" />, level: 90 },
     ]
   },
@@ -41,8 +60,21 @@ const skillCategories = [
     category: "Tools & Design",
     icon: <SiFigma className="text-pink-400" />,
     skills: [
+      { name: "Git", icon: <FaGitAlt className="text-orange-600" />, level: 85 },
+      { name: "GitHub", icon: <FaGithub className="text-white" />, level: 85 },
+      { name: "Postman", icon: <SiPostman className="text-orange-600" />, level: 85 },
+      { name: "Docker", icon: <FaDocker className="text-blue-500" />, level: 40 },
       { name: "Figma", icon: <SiFigma className="text-pink-400" />, level: 75 },
-      { name: "UI/UX", icon: <FaFire className="text-orange-400" />, level: 80 },
+      { name: "Canva", icon: <SiCanva className="text-blue-400" />, level: 70 },
+    ]
+  },
+  {
+    category: "Deployment & Integration",
+    icon: <SiVercel className="text-white" />,
+    skills: [
+      { name: "Vercel", icon: <SiVercel className="text-white" />, level: 80 },
+      { name: "Razorpay", icon: <FaCreditCard className="text-blue-600" />, level: 75 },
+      { name: "JWT/OAuth", icon: <FaCode className="text-yellow-500" />, level: 80 },
     ]
   }
 ];

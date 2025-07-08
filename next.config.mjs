@@ -36,25 +36,12 @@ const nextConfig = {
     compiler: {
       removeConsole: process.env.NODE_ENV === 'production',
     },
-    // Webpack-specific optimizations - only apply when not using Turbopack
-    webpack: (config, { dev, isServer }) => {
-      // Webpack-specific optimizations here
-      return config;
-    },
   }),
   
   // Experimental features compatible with both
   experimental: {
-    // Use features compatible with both Webpack and Turbopack
     optimizePackageImports: ['framer-motion', 'react-icons'],
   },
-  
-  // Turbopack configuration (modern approach)
-  ...(isTurbopack ? {
-    turbopack: {
-      // Turbopack-specific settings if needed
-    },
-  } : {}),
   
   // Headers for caching
   async headers() {
@@ -74,10 +61,6 @@ const nextConfig = {
             key: 'X-XSS-Protection',
             value: '1; mode=block',
           },
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=0, must-revalidate',
-          },
         ],
       },
       {
@@ -86,26 +69,6 @@ const nextConfig = {
           {
             key: 'Cache-Control',
             value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
-      {
-        // Add strong caching for static assets
-        source: '/_next/static/(.*)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
-      {
-        // But don't cache API routes and dynamic content
-        source: '/api/(.*)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'no-store, max-age=0',
           },
         ],
       },
