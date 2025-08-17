@@ -8,7 +8,7 @@ export default function SEO() {
   const title = "Reyan Shafi | Full-Stack Developer";
   const description = "Reyan Shafi is a Full-Stack Developer specializing in crafting clean, minimalistic user experiences with React, Next.js, and Tailwind CSS.";
   const siteUrl = "https://reyannshafi.vercel.app/"; // Replace with your actual URL
-  const imageUrl = `${siteUrl}/assets/pic.png`; // Replace with your OG image
+  const imageUrl = `${siteUrl}/assets/pic2.png`; // Replace with your OG image
   const author = "Reyan Shafi";
   const keywords = [
     'Reyan Shafi',

@@ -6,7 +6,7 @@ const STATIC_ASSETS = [
   '/projects',
   '/contact',
   '/blog',
-  '/assets/pic.png',
+  '/assets/pic2.png',
   '/assets/resume.pdf',
   '/favicon.ico'
 ];
